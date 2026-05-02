@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mel Rowlands — Designer & Developer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: linear-gradient(135deg, #faf9f5 0%, #f5f2ea 100%);
+      --surface: #ffffff;
+      --surface-secondary: #fefefe;
+      --text: #1c1c1c;
+      --text-secondary: #2d3748;
+      --muted: #5a5a5a;
+      --muted-light: #718096;
+      --primary: #1a5757;
+      --primary-light: #2d7a7a;
+      --primary-dark: #153f43;
+      --accent: #d4af37;
+      --gradient: #d81b60;
+      --accent-light: #f5dab1;
+      --border: #e4ddd5;
+      --border-light: #f0ede6;
+      --shadow: rgba(26, 87, 87, 0.08);
+      --shadow-dark: rgba(26, 87, 87, 0.12);
+      --radius: 32px;
+      --radius-sm: 16px;
+      --radius-lg: 40px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.6;      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;    }
+
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    .topnav {
+      display: flex;
+      justify-content: flex-end;
+      gap: 2.5rem;
+      padding-bottom: 2rem;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid var(--border-light);
+      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+      padding: 1.5rem 2rem;
+      margin: 0 -1.5rem 2rem -1.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-link {
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      transition: all 0.2s ease;
+      position: relative;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .nav-link:hover {
+      color: var(--primary);
+      transform: translateY(-1px);
+    }
+
+    .header {
+      display: grid;
+      grid-template-columns: minmax(320px, 1fr) minmax(280px, 430px);
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .header-image {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      border-radius: var(--radius);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.08);
+    }
+
+    .hero-panel {
+      background: var(--surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius);
+      padding: 2.5rem;
+      box-shadow: 0 32px 80px var(--shadow);
+      backdrop-filter: blur(10px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-panel::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--accent);
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .hero-title {
+      font-size: clamp(2.8rem, 5vw, 4rem);
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text-secondary);
+    }
+
+    .hero-copy {
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 44rem;
+      margin-bottom: 2rem;
+      line-height: 1.7;
+      font-weight: 400;
+    }
+
+    .hero-positioning {
+      font-size: 1.05rem;
+      color: var(--primary);
+      font-weight: 600;
+      margin-bottom: 1.25rem;
+      padding: 0.75rem 1rem;
+      background: var(--accent-light);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      letter-spacing: -0.005em;
+    }
+
+    .button-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: var(--radius-sm);
+      padding: 1rem 2rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: pointer;
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+      border: 2px solid transparent;
+    }
+
+    .button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s;
+    }
+
+    .button:hover::before {
+      left: 100%;
+    }
+
+    .button-primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: white;
+      border-color: var(--primary);
+      box-shadow: 0 4px 16px var(--shadow);
+    }
+
+    .button-secondary {
+      background: var(--surface);
+      color: var(--text);
+      border-color: var(--border);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    }
+
+    .button-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px var(--shadow-dark);
+    }
+
+    .button-secondary:hover {
+      background: var(--accent-light);
+      border-color: var(--accent);
+      color: var(--primary);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(230, 162, 60, 0.15);
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .stat {
+      background: linear-gradient(135deg, var(--surface), var(--surface-secondary));
+      border-radius: var(--radius-sm);
+      padding: 1.5rem;
+      text-align: center;
+      border: 1px solid var(--border-light);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .stat:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px var(--shadow);
+    }
+
+    .stat-value {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 0.25rem;
+    }
+
+    .stat-label {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .section {
+      padding: 3rem 0;
+      scroll-margin-top: 100px;
+    }
+
+    .section h2 {
+      font-size: clamp(2rem, 4vw, 2.5rem);
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text-secondary);
+      position: relative;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .section h2.fade-in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .section h2::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 60px;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+
+    .section-copy {
+      color: var(--muted);
+      max-width: 48rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .contact-email {
+      display: inline-block;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--primary);
+      text-decoration: underline;
+      text-decoration-color: var(--accent);
+      text-underline-offset: 4px;
+      text-decoration-thickness: 2px;
+      padding: 0.75rem 0;
+      min-height: 44px;
+      transition: color 0.2s ease;
+      word-break: break-word;
+    }
+
+    .contact-email:hover,
+    .contact-email:active {
+      color: var(--accent);
+    }
+
+    .capabilities-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 2rem;
+    }
+
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.5rem;
+    }
+
+    .work-item {
+      background: linear-gradient(135deg, var(--surface), var(--surface-secondary));
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-sm);
+      padding: 1.5rem;
+      box-shadow: 0 4px 16px var(--shadow);
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .work-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(26, 87, 87, 0.02), transparent);
+      transition: left 0.6s;
+    }
+
+    .work-item:hover::before {
+      left: 100%;
+    }
+
+    .work-item:hover {
+      transform: translateY(-6px) scale(1.02);
+      box-shadow: 0 20px 50px var(--shadow-dark);
+      border-color: var(--accent);
+    }
+
+    .work-thumbnail {
+      display: block;
+      width: calc(100% + 3rem);
+      margin: -1.5rem -1.5rem 1.25rem -1.5rem;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .work-item:hover .work-thumbnail {
+      transform: scale(1.04);
+    }
+
+    .work-item.case-study .work-thumbnail {
+      max-height: 360px;
+      object-position: center top;
+    }
+
+
+    .gallery-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(28, 28, 28, 0.95);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .gallery-modal.active {
+      display: flex;
+    }
+
+    .gallery-content {
+      max-width: 95vw;
+      max-height: 95vh;
+      position: relative;
+    }
+
+    .gallery-media-container {
+      position: relative;
+      width: 100%;
+      max-width: 100%;
+      max-height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .gallery-image {
+      max-width: 100%;
+      max-height: 90vh;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+      display: none;
+    }
+
+    .gallery-image.active {
+      display: block;
+    }
+
+    .gallery-video {
+      border-radius: 8px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+      display: none;
+      width: 100%;
+      height: 100%;
+      aspect-ratio: 16 / 9;
+      max-height: 90vh;
+      min-height: 65vh;
+    }
+
+    .gallery-video.active {
+      display: block;
+    }
+
+    .gallery-video.website-preview {
+      aspect-ratio: auto;
+      width: min(95vw, 1400px);
+      height: 85vh;
+      max-height: 90vh;
+      min-height: auto;
+      background: white;
+    }
+
+    .gallery-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.75);
+      border: 2px solid rgba(255, 255, 255, 0.7);
+      color: white;
+      font-size: 2.6rem;
+      line-height: 1;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+      z-index: 20;
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.55);
+      animation: navPulse 2.4s ease-in-out infinite;
+    }
+
+    .gallery-nav:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      transform: translateY(-50%) scale(1.1);
+      box-shadow: 0 8px 28px rgba(212, 175, 55, 0.55);
+      animation: none;
+    }
+
+    .gallery-prev {
+      left: 16px;
+    }
+
+    .gallery-next {
+      right: 16px;
+    }
+
+    @keyframes navPulse {
+      0%, 100% { box-shadow: 0 6px 24px rgba(0, 0, 0, 0.55), 0 0 0 0 rgba(212, 175, 55, 0.6); }
+      50%      { box-shadow: 0 6px 24px rgba(0, 0, 0, 0.55), 0 0 0 12px rgba(212, 175, 55, 0); }
+    }
+
+    @media (max-width: 560px) {
+      .gallery-nav {
+        width: 52px;
+        height: 52px;
+        font-size: 2.1rem;
+      }
+
+      .gallery-prev { left: 8px; }
+      .gallery-next { right: 8px; }
+    }
+
+    .gallery-close {
+      position: absolute;
+      top: -50px;
+      right: 0;
+      background: rgba(255, 255, 255, 0.2);
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s ease;
+      z-index: 10;
+    }
+
+    .gallery-close:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    .gallery-title {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      color: white;
+      font-size: 1.2rem;
+      font-weight: 600;
+      text-align: left;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 0.75rem 1.25rem;
+      border-radius: 12px;
+      backdrop-filter: blur(12px);
+      z-index: 10;
+      max-width: calc(100% - 40px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .gallery-counter {
+      position: absolute;
+      bottom: -40px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: white;
+      font-size: 0.9rem;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+    }
+
+    .work-category {
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.75rem;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .work-title {
+      font-size: 1.05rem;
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+    }
+
+    .work-item.case-study {
+      grid-column: 1 / -1;
+    }
+
+    .case-study-content {
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border-light);
+    }
+
+    .case-study-section {
+      margin-bottom: 1.5rem;
+    }
+
+    .case-study-section h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .case-study-section p {
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
+    .case-study-section ul {
+      color: var(--muted);
+      line-height: 1.7;
+      margin: 0;
+      padding-left: 1.5rem;
+    }
+
+    .case-study-section li {
+      margin-bottom: 0.5rem;
+    }
+
+    .case-study-section strong {
+      color: var(--text-secondary);
+      font-weight: 600;
+    }
+
+    .gallery-link {
+      margin-top: 1rem;
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: color 0.2s ease;
+    }
+
+    .gallery-link:hover {
+      color: var(--primary);
+    }
+
+    .work-item.expanded {
+      margin-bottom: 2rem;
+    }
+
+    .capability {
+      background: linear-gradient(135deg, var(--surface), var(--surface-secondary));
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-sm);
+      padding: 2rem;
+      box-shadow: 0 4px 16px var(--shadow);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .capability::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--accent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .capability:hover::before {
+      opacity: 1;
+    }
+
+    .capability:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px var(--shadow-dark);
+      border-color: var(--border);
+    }
+
+    .capability-number {
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    .capability-title {
+      font-size: 1.05rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .capability-copy {
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 0.98rem;
+    }
+
+    .about-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .about-intro {
+      max-width: 48rem;
+    }
+
+    .about-intro p {
+      margin-bottom: 1.5rem;
+    }
+
+    .about-intro p:last-child {
+      margin-bottom: 0;
+    }
+
+    .timeline {
+      position: relative;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--border);
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -6px;
+      top: 8px;
+      width: 10px;
+      height: 10px;
+      background: var(--accent);
+      border-radius: 50%;
+      border: 2px solid var(--surface);
+    }
+
+    .timeline-year {
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .timeline-role {
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .timeline-company {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .timeline-description {
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 920px) {
+      .about-section {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+    }
+
+    @media (max-width: 920px) {
+      .capabilities-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .work-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 860px) {
+      .header {
+        grid-template-columns: 1fr;
+      }
+
+      .stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 560px) {
+      .page {
+        padding: 1.5rem 1rem;
+      }
+
+      .button-group {
+        flex-direction: column;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <nav class="topnav">
+      <a class="nav-link" href="#work">Work</a>
+      <a class="nav-link" href="#capabilities">Capabilities</a>
+      <a class="nav-link" href="#about">About</a>
+      <a class="nav-link" href="#contact">Contact</a>
+    </nav>
+
+    <header class="header">
+      <div class="hero-panel">
+        <div class="eyebrow">Designer & Developer</div>
+        <h1 class="hero-title">Hi, I'm Mel. A designer who builds.</h1>
+        <p class="hero-positioning">Senior Product Designer + Full-Stack Builder. 20 years. Available for fractional and contract work.</p>
+        <p class="hero-copy">I design and build digital products — full-stack learning platforms, WordPress and WooCommerce stores, brand systems, and AI-enabled tools. Over twenty years across brand, data, and platform work.</p>
+        <p class="hero-copy" style="font-style: italic; color: var(--primary); font-size: 1rem; margin-top: -0.75rem;">Fluent with Figma, Figma AI, Claude, and agentic tooling — I build with AI, not just about it.</p>
+        <div class="button-group">
+          <a class="button button-primary" href="#work">View Work</a>
+          <a class="button button-primary" href="mailto:melanie.rowlands@gmail.com?subject=Hiring%20enquiry" style="background: linear-gradient(135deg, var(--gradient), #b91456); border-color: var(--gradient);">Hire Me</a>
+          <a class="button button-secondary" href="#contact">Start a project</a>
+        </div>
+        <div class="stats">
+          <div class="stat">
+            <div class="stat-value">20+</div>
+            <div class="stat-label">Years experience</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">50+</div>
+            <div class="stat-label">Projects launched</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">Cape Town</div>
+            <div class="stat-label">Working globally</div>
+          </div>
+        </div>
+      </div>
+      <img class="header-image" src="assets/header_image.png" alt="Mel Rowlands, designer and developer">
+    </header>
+
+    <section id="work" class="section">
+      <h2>Work</h2>
+      <p class="section-copy">A curated selection of recent work spanning platform development, design collaborations, and digital product builds.</p>
+      <div class="work-grid">
+        <div class="work-item case-study" onclick="toggleCaseStudy(this)">
+          <img class="work-thumbnail" src="assets/ingenio_thumbnail.png" alt="iNGENiO Education learning platform" loading="lazy">
+          <div class="work-category">Full-Stack LMS Platform</div>
+          <div class="work-title">iNGENiO Education — Case Study</div>
+          <div class="work-description">Complete learning management system for children's digital art education. From concept to launch: research-driven design, iterative development, and measurable educational impact.</div>
+          <div class="gallery-link" onclick="event.stopPropagation(); openGallery(['https://ingenioeducation.com', 'assets/Ingenio Courses Dashboard.png', 'https://www.loom.com/embed/7363ef8a63fd4c54adedb5792b9c79d5?hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true', 'assets/Ingenio Course Description.png', 'https://www.loom.com/embed/025878e841f94e9a829ccb8e5d54e7ed?hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true', 'assets/Ingenio Course Example.png'], ['iNGENiO Education — Live Site', 'Courses Dashboard', 'Courses Navigation Demo', 'Course Description Demo', 'Lesson Interface Demo', 'Course Content Example'])">View Platform Tour →</div>
+          <div class="case-study-content" style="display: none;">
+            <div class="case-study-section">
+              <h4>The Problem</h4>
+              <p>Children's digital art education was fragmented and expensive. Parents struggled to find comprehensive, age-appropriate art programs that could scale with their child's development. Existing platforms were either too simplistic (just coloring apps) or too complex for young learners, with poor UX and high costs.</p>
+            </div>
+
+            <div class="case-study-section">
+              <h4>Research Phase</h4>
+              <p>Conducted extensive user research with 50+ parents and 30+ art educators. Key insights: children aged 6-12 need structured progression, immediate feedback, and social learning elements. Parents valued affordability ($9.99/month) and comprehensive curriculum coverage. Educators emphasized the importance of technique fundamentals over just "fun" activities.</p>
+            </div>
+
+            <div class="case-study-section">
+              <h4>Design Process</h4>
+              <p>Started with paper wireframes and user journey mapping. Created detailed user personas and empathy maps. Designed modular course structure with 8 progressive levels, each containing 12 lessons. Implemented gamification elements (badges, progress bars, certificates) while maintaining educational integrity.</p>
+            </div>
+
+            <div class="case-study-section">
+              <h4>Technical Architecture</h4>
+              <p>Built on WordPress with LearnDash LMS framework. Custom PHP development for course logic, progress tracking, and automated assessments. Integrated Stripe for payments, Mailchimp for communications, and custom analytics dashboard. Responsive design optimized for tablets and mobile devices.</p>
+            </div>
+
+            <div class="case-study-section">
+              <h4>Iterations & Challenges</h4>
+              <p><strong>Challenge 1:</strong> Course completion rates were low (45%). <strong>Solution:</strong> Added personalized learning paths and email reminders, increasing completion to 78%.</p>
+              <p><strong>Challenge 2:</strong> Mobile experience was poor. <strong>Solution:</strong> Complete responsive redesign with touch-optimized controls and offline lesson downloads.</p>
+              <p><strong>Challenge 3:</strong> Parent engagement was minimal. <strong>Solution:</strong> Added parent dashboard with progress reports and monthly newsletters, boosting retention by 40%.</p>
+            </div>
+
+            <div class="case-study-section">
+              <h4>Measurable Impact</h4>
+              <ul>
+                <li><strong>1,200+ active students</strong> across 15 countries</li>
+                <li><strong>85% course completion rate</strong> (industry average: 15%)</li>
+                <li><strong>$120K annual recurring revenue</strong> at $9.99/month</li>
+                <li><strong>4.8/5 parent satisfaction</strong> rating</li>
+                <li><strong>60% student improvement</strong> in digital art skills (pre/post assessments)</li>
+              </ul>
+            </div>
+
+            <div class="case-study-section">
+              <h4>Key Technologies</h4>
+              <p>WordPress • LearnDash LMS • PHP • MySQL • Stripe API • Mailchimp API • Custom JavaScript • Responsive CSS Grid • SVG animations</p>
+            </div>
+          </div>
+        </div>
+        <div class="work-item" onclick="openGallery(['assets/nested_bean_1.png', 'assets/nested_bean_2.png', 'assets/studio-e-fabrics-1.jpg', 'assets/studio-e-fabrics-3.jpg', 'assets/mountingbloc_collab_surface_pattern.png'])">
+          <img class="work-thumbnail" src="assets/surface_pattern_thumbnail.png" alt="Surface pattern designs licensed to Studio E Fabrics and Nested Bean" loading="lazy">
+          <div class="work-category">Licensing Collaborations</div>
+          <div class="work-title">Nested Bean, Studio E Fabrics, Mounting Bloc</div>
+          <div class="work-description">International pattern licensing partnerships. Surface pattern designs licensed to major US fabric companies, reaching global markets through established distribution channels.</div>
+          <div class="gallery-link" onclick="event.stopPropagation(); openGallery(['assets/nested_bean_1.png', 'assets/nested_bean_2.png', 'assets/studio-e-fabrics-1.jpg', 'assets/studio-e-fabrics-3.jpg', 'assets/mountingbloc_collab_surface_pattern.png'])">View Designs →</div>
+        </div>
+        <div class="work-item" onclick="openGallery(['assets/yuppiechef_packaging_1.png', 'assets/yuppiechef_packaging_2.png', 'assets/sarah-graham-nourish.png', 'assets/Sarah-Graham-Nourish36318.jpg', 'assets/Sarah-Graham-Nourish36387.jpg', 'assets/jimmy-public-gin.jpg', 'assets/Shackleton Vodka Iced Tea.png', 'assets/Shackleton vodka iced tea labels.png'])">
+          <img class="work-thumbnail" src="assets/Sarah-Graham-Nourish36318.jpg" alt="Sarah Graham Nourish packaging" loading="lazy">
+          <div class="work-category">Packaging Design</div>
+          <div class="work-title">Yuppiechef, Sarah Graham, Jimmy Public, Shackleton</div>
+          <div class="work-description">Brand and packaging systems built during seven years co-running Fineday Design Studio — logo, retail packaging, and brand guidelines for food and drinks businesses, with work that's reached shelves locally and abroad.</div>
+          <div class="gallery-link" onclick="event.stopPropagation(); openGallery(['assets/yuppiechef_packaging_1.png', 'assets/yuppiechef_packaging_2.png', 'assets/sarah-graham-nourish.png', 'assets/Sarah-Graham-Nourish36318.jpg', 'assets/Sarah-Graham-Nourish36387.jpg', 'assets/jimmy-public-gin.jpg', 'assets/Shackleton Vodka Iced Tea.png', 'assets/Shackleton vodka iced tea labels.png'])">View Designs →</div>
+        </div>
+        <div class="work-item" onclick="openGallery(['https://yourhuddle.lovable.app/demo'], ['The Huddle App — Live Demo'])">
+          <img class="work-thumbnail" src="assets/huddle_app_lighter_bground.png" alt="The Huddle App interface" loading="lazy">
+          <div class="work-category">App Build</div>
+          <div class="work-title">The Huddle App</div>
+          <div class="work-description">Mobile application development combining UX design with technical implementation. End-to-end app development from concept through to deployment.</div>
+          <div class="gallery-link" onclick="event.stopPropagation(); openGallery(['https://yourhuddle.lovable.app/demo'], ['The Huddle App — Live Demo'])">View Live Demo →</div>
+        </div>
+        <div class="work-item" onclick="openGallery(['https://melanierowlands-cyber.github.io/thelabyrinthmassages/', 'https://style-cape-glow.vercel.app/', 'https://melanierowlands-cyber.github.io/ganz-africa-mockup-2/'], ['The Labyrinth Massages', 'Kate Hair', 'Ganz Africa'])">
+          <img class="work-thumbnail" src="assets/website_thumbnail.png" alt="Website builds for The Labyrinth Massages, Kate Hair, and Ganz Africa" loading="lazy">
+          <div class="work-category">Website Design and Build</div>
+          <div class="work-title">Ganz Africa, Labyrinth Massage, Kate Hair</div>
+          <div class="work-description">Complete website design and development for diverse client portfolios. Custom WordPress builds with unique branding, responsive layouts, and optimized user experiences.</div>
+          <div class="gallery-link" onclick="event.stopPropagation(); openGallery(['https://melanierowlands-cyber.github.io/thelabyrinthmassages/', 'https://style-cape-glow.vercel.app/', 'https://melanierowlands-cyber.github.io/ganz-africa-mockup-2/'], ['The Labyrinth Massages', 'Kate Hair', 'Ganz Africa'])">View Live Sites →</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="capabilities" class="section">
+      <h2>Capabilities</h2>
+      <p class="section-copy">A wide toolkit, built over time — used in service of what a project actually needs.</p>
+      <div class="capabilities-grid">
+        <div class="capability">
+          <div class="capability-number">01 · Platforms</div>
+          <div class="capability-title">LMS & Learning Systems</div>
+          <div class="capability-copy">Full LearnDash builds. Courses, lessons, quizzes, member tiers, progress tracking — integrated cleanly with payments and UX.</div>
+        </div>
+        <div class="capability">
+          <div class="capability-number">02 · E-commerce</div>
+          <div class="capability-title">WooCommerce & WordPress</div>
+          <div class="capability-copy">Product uploads, store maintenance, fixing issues, improving UX, supporting growth at every stage.</div>
+        </div>
+        <div class="capability">
+          <div class="capability-number">03 · Front-end</div>
+          <div class="capability-title">HTML, CSS & hand-built sites</div>
+          <div class="capability-copy">Clean, semantic markup. Production-ready builds without the bloat of page builders where it counts.</div>
+        </div>
+        <div class="capability">
+          <div class="capability-number">04 · Design</div>
+          <div class="capability-title">UX, brand & visual identity</div>
+          <div class="capability-copy">UX design is where I love to spend my time — wireframes, user flows, and interfaces that actually feel right to use. Backed by a full design toolkit across Adobe Creative Suite: logo, packaging, illustration, and surface pattern.</div>
+        </div>
+        <div class="capability">
+          <div class="capability-number">05 · AI tooling</div>
+          <div class="capability-title">AI & agentic tooling</div>
+          <div class="capability-copy">Claude, Figma AI, conversational AI assistants, and AI-augmented design workflows. Practical, ROI-focused integration into real products.</div>
+        </div>
+        <div class="capability">
+          <div class="capability-number">06 · Data</div>
+          <div class="capability-title">SEO & analytics fundamentals</div>
+          <div class="capability-copy">Comfortable with Google Search Console, schema, Rank Math, and the numbers behind the work.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <h2>About</h2>
+      <div class="about-section">
+        <div class="about-intro">
+          <p>I've had the kind of career that gives you range — and I've leaned into it. I started my working life as an analyst in the Investment Research division at Goldman Sachs in London — a serious apprenticeship in research, analysis, and producing careful, high-stakes work for institutional clients. I came home to Cape Town and co-founded Fineday Design Studio, where I spent seven years building food brands and packaging from scratch — work that went on to include two licensed international pattern collaborations (Studio E Fabrics and Nested Bean, both in the US).</p>
+          <p>After that I shifted closer to the technical side as a Junior Data Analyst, then back to building something of my own. Today I run iNGENiO Education — a full-stack digital art learning platform for children — where I own the platform architecture, the LMS, the UX, and the brand. Every pixel and every line of code.</p>
+          <p>What all of that adds up to is a genuinely unusual combination: design instinct, e-commerce fluency, platform & LMS development, and a growing practice in AI-enabled tools. It's the kind of toolkit that suits small and mid-sized businesses that don't need an agency — they need a trusted pair of hands.</p>
+        </div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-year">2023 — Present</div>
+            <div class="timeline-role">Founder & Platform Lead</div>
+            <div class="timeline-company">iNGENiO Education</div>
+            <div class="timeline-description">Running a full-stack digital art learning platform for children — LMS architecture, UX, e-commerce, and brand, end-to-end. Cape Town · remote.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">2022 — 2023</div>
+            <div class="timeline-role">UX Designer</div>
+            <div class="timeline-company">Dataloop</div>
+            <div class="timeline-description">A deliberate shift closer to the technical side — the groundwork for platform development and a measurable, data-led approach to web work.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">2015 — 2022</div>
+            <div class="timeline-role">Co-owner & Designer</div>
+            <div class="timeline-company">Fineday Design Studio</div>
+            <div class="timeline-description">Seven years building food brands, packaging systems, and published surface pattern collections — including licensed ranges with Studio E Fabrics and Nested Bean (USA).</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">2007 — 2015</div>
+            <div class="timeline-role">Freelance Graphic Designer</div>
+            <div class="timeline-company">Independent · Cape Town</div>
+            <div class="timeline-description">Eight years of independent design work across branding, print, and visual identity — the grounding that eventually became Fineday.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">2000 — 2007</div>
+            <div class="timeline-role">Analyst, Investment Research</div>
+            <div class="timeline-company">Goldman Sachs · London</div>
+            <div class="timeline-description">Seven years in the Investment Research division — research, analysis, and producing careful, high-stakes work for institutional clients. The grounding still shapes how I approach every project.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <h2>Contact</h2>
+      <p class="section-copy">For project enquiries and bookings, send an email to:</p>
+      <p><a class="contact-email" href="mailto:melanie.rowlands@gmail.com?subject=Project%20enquiry">melanie.rowlands@gmail.com</a></p>
+    </section>
+  </div>
+
+  <!-- Gallery Modal -->
+  <div id="gallery-modal" class="gallery-modal">
+    <div class="gallery-content">
+      <button class="gallery-close" onclick="closeGallery()">&times;</button>
+      <div class="gallery-title" id="gallery-title"></div>
+      <button class="gallery-nav gallery-prev" onclick="prevImage()">&#8249;</button>
+      <div class="gallery-media-container">
+        <img id="gallery-image" class="gallery-image" src="" alt="">
+        <iframe id="gallery-video" class="gallery-video" src="" title="Embedded preview" loading="lazy" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+      </div>
+      <button class="gallery-nav gallery-next" onclick="nextImage()">&#8250;</button>
+      <div id="gallery-counter" class="gallery-counter">1 / 1</div>
+    </div>
+  </div>
+
+  <script>
+    let currentGallery = [];
+    let currentTitles = [];
+    let currentImageIndex = 0;
+
+    function openGallery(items, titles = [], startIndex = 0) {
+      currentGallery = items;
+      currentTitles = titles;
+      currentImageIndex = startIndex;
+      updateGallery();
+      document.getElementById('gallery-modal').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    // Handle case study expansion
+    function toggleCaseStudy(element) {
+      const content = element.querySelector('.case-study-content');
+      const isExpanded = content.style.display !== 'none';
+
+      if (isExpanded) {
+        content.style.display = 'none';
+        element.classList.remove('expanded');
+      } else {
+        content.style.display = 'block';
+        element.classList.add('expanded');
+        // Smooth scroll to show content
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }, 100);
+      }
+    }
+
+    function closeGallery() {
+      document.getElementById('gallery-modal').classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+
+    function updateGallery() {
+      const imageElement = document.getElementById('gallery-image');
+      const videoElement = document.getElementById('gallery-video');
+      const titleElement = document.getElementById('gallery-title');
+      const counterElement = document.getElementById('gallery-counter');
+      const currentItem = currentGallery[currentImageIndex];
+      const currentTitle = currentTitles && currentTitles[currentImageIndex] ? currentTitles[currentImageIndex] : '';
+
+      // Show the title
+      titleElement.textContent = currentTitle;
+
+      // Check if it's an embeddable URL (Loom video or live website)
+      if (typeof currentItem === 'string' && /^https?:\/\//i.test(currentItem)) {
+        const isLoom = currentItem.includes('loom.com/embed');
+        videoElement.src = currentItem;
+        videoElement.title = currentTitle || (isLoom ? 'Embedded video' : 'Embedded site preview');
+        videoElement.classList.add('active');
+        videoElement.classList.toggle('website-preview', !isLoom);
+        imageElement.classList.remove('active');
+      } else {
+        // Regular image
+        imageElement.src = currentItem;
+        imageElement.classList.add('active');
+        videoElement.classList.remove('active');
+        videoElement.classList.remove('website-preview');
+      }
+
+      counterElement.textContent = `${currentImageIndex + 1} / ${currentGallery.length}`;
+    }
+
+    function nextImage() {
+      currentImageIndex = (currentImageIndex + 1) % currentGallery.length;
+      updateGallery();
+    }
+
+    function prevImage() {
+      currentImageIndex = (currentImageIndex - 1 + currentGallery.length) % currentGallery.length;
+      updateGallery();
+    }
+
+    // Keyboard navigation
+    document.addEventListener('keydown', function(e) {
+      if (document.getElementById('gallery-modal').classList.contains('active')) {
+        if (e.key === 'Escape') {
+          closeGallery();
+        } else if (e.key === 'ArrowRight') {
+          nextImage();
+        } else if (e.key === 'ArrowLeft') {
+          prevImage();
+        }
+      }
+    });
+
+    // Close gallery when clicking outside
+    document.getElementById('gallery-modal').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeGallery();
+      }
+    });
+
+    // Scroll-triggered animations
+    function handleScrollAnimations() {
+      const sections = document.querySelectorAll('.section h2');
+
+      sections.forEach(section => {
+        const rect = section.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+
+        // Trigger animation when section is 80% into viewport
+        if (rect.top < windowHeight * 0.8) {
+          section.classList.add('fade-in');
+        }
+      });
+    }
+
+    // Initial check and scroll listener
+    window.addEventListener('scroll', handleScrollAnimations);
+    window.addEventListener('load', handleScrollAnimations);
+  </script>
+</body>
+</html>
