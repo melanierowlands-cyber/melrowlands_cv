@@ -593,6 +593,34 @@
 
     .work-item.case-study {
       grid-column: 1 / -1;
+      cursor: default;
+    }
+
+    .work-eyebrow {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    .case-study-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem 1.5rem;
+      align-items: center;
+      margin-top: 1.5rem;
+    }
+
+    .case-study-actions .button {
+      padding: 0.85rem 1.6rem;
+      font-size: 0.92rem;
+    }
+
+    .case-study-actions .gallery-link {
+      margin-top: 0;
     }
 
     .case-study-content {
@@ -962,52 +990,15 @@
       <h2>Work</h2>
       <p class="section-copy">A curated selection of recent work spanning platform development, design collaborations, and digital product builds.</p>
       <div class="work-grid">
-        <div class="work-item case-study" onclick="toggleCaseStudy(this)">
+        <div class="work-item case-study">
           <img class="work-thumbnail" src="assets/ingenio_thumbnail.png" alt="iNGENiO Education learning platform" loading="lazy">
+          <div class="work-eyebrow">Featured project</div>
           <div class="work-category">Founder & Lead Designer</div>
           <div class="work-title">iNGENiO Education</div>
-          <div class="work-description">Digital art learning platform for kids aged 5–18. Designed and built end-to-end across UX, IA, and platform implementation.</div>
-          <div class="gallery-link" onclick="event.stopPropagation(); openGallery(['https://ingenioeducation.com', 'assets/Ingenio Courses Dashboard.png', 'https://www.loom.com/embed/7363ef8a63fd4c54adedb5792b9c79d5?hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true', 'assets/Ingenio Course Description.png', 'https://www.loom.com/embed/025878e841f94e9a829ccb8e5d54e7ed?hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true', 'assets/Ingenio Course Example.png'], ['iNGENiO Education — Live Site', 'Courses Dashboard', 'Courses Navigation Demo', 'Course Description Demo', 'Lesson Interface Demo', 'Course Content Example'])">View Platform Tour →</div>
-          <div class="case-study-content" style="display: none;">
-            <div class="case-study-section">
-              <p>iNGENiO Education is an online digital art platform for kids aged 5–18, built around a library of 100+ video courses. I co-founded the platform and led product design — owning UX research, information architecture, visual design, and platform implementation on WordPress, WooCommerce, and LearnDash LMS. Alongside two co-founders, I shared decision-making on pricing, positioning, and product direction.</p>
-            </div>
-
-            <div class="case-study-section">
-              <h4>The Problem</h4>
-              <p>We were getting good traffic to the Course Library but seeing high bounce rates and low conversion. Light user feedback surveys revealed three recurring themes: parents felt overwhelmed by 100+ individual courses; they were confused by course duplicates across different drawing apps; and they couldn't quickly judge value before committing to a one-off purchase.</p>
-            </div>
-
-            <div class="case-study-section">
-              <h4>What I Did</h4>
-              <ul>
-                <li><strong>Listened first.</strong> Sent lightweight feedback surveys to existing users. Synthesised responses into three core pain points.</li>
-                <li><strong>Simplified the Course Library.</strong> Redesigned course cards to be visually-led — drawing app shown at a glance, one-line description, less dense copy.</li>
-                <li><strong>Reframed the pricing model.</strong> Introduced an "All Access Pass" monthly subscription priced just above a single course, and surfaced it across multiple decision points.</li>
-                <li><strong>Built it.</strong> Implemented the entire redesign myself on WordPress / WooCommerce / LearnDash, allowing fast iteration without engineering bottlenecks.</li>
-              </ul>
-            </div>
-
-            <div class="case-study-section">
-              <h4>What Happened</h4>
-              <p>The visually-led course cards eliminated the "Procreate vs Sketchbook" confusion users had been reporting. Users overwhelmingly chose the All Access Pass over one-off courses once they could see the value of 100+ courses at one monthly price. Free trial sign-ups grew significantly after we surfaced the pass at multiple touchpoints. The next bottleneck — paid conversion below target — revealed itself, which led to two further redesigns covered in subsequent case studies.</p>
-            </div>
-
-            <div class="case-study-section">
-              <h4>How I Used AI in This Project</h4>
-              <p>I used Claude (Anthropic's AI assistant) and Claude Code throughout this work: prototyping HTML/CSS variations of redesigned components in hours rather than days; pressure-testing the All Access Pass pricing model before committing build time; and accelerating WordPress / WooCommerce / LearnDash customisations.</p>
-              <p>What AI didn't do: the design decisions, the user research synthesis, or the judgement calls on what to build. My workflow treats AI as a fast junior collaborator — useful for execution speed, but always reviewed by me on anything fact-based or strategic.</p>
-            </div>
-
-            <div class="case-study-section">
-              <h4>Tech Stack</h4>
-              <p>WordPress · WooCommerce · LearnDash LMS · Custom HTML/CSS · Claude Code (AI-assisted development) · Figma</p>
-            </div>
-
-            <div class="case-study-section">
-              <h4>Honest Note</h4>
-              <p>iNGENiO is an early-stage platform I co-founded, not a scaled product with millions of users. The "results" of this work are best understood as qualitative learnings and behavioural shifts from a small but real user base — not enterprise-scale metrics. What this demonstrates is design judgement, product thinking, and end-to-end ownership at the most formative stage of a digital product.</p>
-            </div>
+          <div class="work-description">Digital art learning platform for kids aged 5–18. Designed and built end-to-end across UX, IA, and platform implementation. A three-part product design journey through acquisition, activation, and engagement.</div>
+          <div class="case-study-actions">
+            <a class="button button-primary" href="/case-studies/">View Case Studies →</a>
+            <a class="gallery-link" onclick="openGallery(['https://ingenioeducation.com', 'assets/Ingenio Courses Dashboard.png', 'https://www.loom.com/embed/7363ef8a63fd4c54adedb5792b9c79d5?hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true', 'assets/Ingenio Course Description.png', 'https://www.loom.com/embed/025878e841f94e9a829ccb8e5d54e7ed?hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true', 'assets/Ingenio Course Example.png'], ['iNGENiO Education — Live Site', 'Courses Dashboard', 'Courses Navigation Demo', 'Course Description Demo', 'Lesson Interface Demo', 'Course Content Example'])">View Platform Tour →</a>
           </div>
         </div>
         <div class="work-item" onclick="openGallery(['assets/nested_bean_1.png', 'assets/nested_bean_2.png', 'assets/studio-e-fabrics-1.jpg', 'assets/studio-e-fabrics-3.jpg', 'assets/mountingbloc_collab_surface_pattern.png'], ['Nested Bean: Zen Sack Wearable Blanket', 'Nested Bean: Zen Sack — Monogram Gold', 'Studio E Fabrics: Welcome To Our Neighborhood Collection', 'Studio E Fabrics: Welcome To Our Neighborhood — Fox Print', 'Mounting Bloc: Rainbow Ponies Baselayer'])">
@@ -1159,24 +1150,6 @@
       updateGallery();
       document.getElementById('gallery-modal').classList.add('active');
       document.body.style.overflow = 'hidden';
-    }
-
-    // Handle case study expansion
-    function toggleCaseStudy(element) {
-      const content = element.querySelector('.case-study-content');
-      const isExpanded = content.style.display !== 'none';
-
-      if (isExpanded) {
-        content.style.display = 'none';
-        element.classList.remove('expanded');
-      } else {
-        content.style.display = 'block';
-        element.classList.add('expanded');
-        // Smooth scroll to show content
-        setTimeout(() => {
-          element.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        }, 100);
-      }
     }
 
     function closeGallery() {
