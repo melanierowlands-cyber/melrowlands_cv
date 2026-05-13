@@ -964,52 +964,49 @@
       <div class="work-grid">
         <div class="work-item case-study" onclick="toggleCaseStudy(this)">
           <img class="work-thumbnail" src="assets/ingenio_thumbnail.png" alt="iNGENiO Education learning platform" loading="lazy">
-          <div class="work-category">Full-Stack LMS Platform</div>
-          <div class="work-title">iNGENiO Education — Case Study</div>
-          <div class="work-description">Complete learning management system for children's digital art education. From concept to launch: research-driven design, iterative development, and measurable educational impact.</div>
+          <div class="work-category">Founder & Lead Designer</div>
+          <div class="work-title">iNGENiO Education</div>
+          <div class="work-description">Digital art learning platform for kids aged 5–18. Designed and built end-to-end across UX, IA, and platform implementation.</div>
           <div class="gallery-link" onclick="event.stopPropagation(); openGallery(['https://ingenioeducation.com', 'assets/Ingenio Courses Dashboard.png', 'https://www.loom.com/embed/7363ef8a63fd4c54adedb5792b9c79d5?hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true', 'assets/Ingenio Course Description.png', 'https://www.loom.com/embed/025878e841f94e9a829ccb8e5d54e7ed?hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true', 'assets/Ingenio Course Example.png'], ['iNGENiO Education — Live Site', 'Courses Dashboard', 'Courses Navigation Demo', 'Course Description Demo', 'Lesson Interface Demo', 'Course Content Example'])">View Platform Tour →</div>
           <div class="case-study-content" style="display: none;">
             <div class="case-study-section">
+              <p>iNGENiO Education is an online digital art platform for kids aged 5–18, built around a library of 100+ video courses. I co-founded the platform and led product design — owning UX research, information architecture, visual design, and platform implementation on WordPress, WooCommerce, and LearnDash LMS. Alongside two co-founders, I shared decision-making on pricing, positioning, and product direction.</p>
+            </div>
+
+            <div class="case-study-section">
               <h4>The Problem</h4>
-              <p>Children's digital art education was fragmented and expensive. Parents struggled to find comprehensive, age-appropriate art programs that could scale with their child's development. Existing platforms were either too simplistic (just coloring apps) or too complex for young learners, with poor UX and high costs.</p>
+              <p>We were getting good traffic to the Course Library but seeing high bounce rates and low conversion. Light user feedback surveys revealed three recurring themes: parents felt overwhelmed by 100+ individual courses; they were confused by course duplicates across different drawing apps; and they couldn't quickly judge value before committing to a one-off purchase.</p>
             </div>
 
             <div class="case-study-section">
-              <h4>Research Phase</h4>
-              <p>Conducted extensive user research with 50+ parents and 30+ art educators. Key insights: children aged 6-12 need structured progression, immediate feedback, and social learning elements. Parents valued affordability ($9.99/month) and comprehensive curriculum coverage. Educators emphasized the importance of technique fundamentals over just "fun" activities.</p>
-            </div>
-
-            <div class="case-study-section">
-              <h4>Design Process</h4>
-              <p>Started with paper wireframes and user journey mapping. Created detailed user personas and empathy maps. Designed modular course structure with 8 progressive levels, each containing 12 lessons. Implemented gamification elements (badges, progress bars, certificates) while maintaining educational integrity.</p>
-            </div>
-
-            <div class="case-study-section">
-              <h4>Technical Architecture</h4>
-              <p>Built on WordPress with LearnDash LMS framework. Custom PHP development for course logic, progress tracking, and automated assessments. Integrated Stripe for payments, Mailchimp for communications, and custom analytics dashboard. Responsive design optimized for tablets and mobile devices.</p>
-            </div>
-
-            <div class="case-study-section">
-              <h4>Iterations & Challenges</h4>
-              <p><strong>Challenge 1:</strong> Course completion rates were low (45%). <strong>Solution:</strong> Added personalized learning paths and email reminders, increasing completion to 78%.</p>
-              <p><strong>Challenge 2:</strong> Mobile experience was poor. <strong>Solution:</strong> Complete responsive redesign with touch-optimized controls and offline lesson downloads.</p>
-              <p><strong>Challenge 3:</strong> Parent engagement was minimal. <strong>Solution:</strong> Added parent dashboard with progress reports and monthly newsletters, boosting retention by 40%.</p>
-            </div>
-
-            <div class="case-study-section">
-              <h4>Measurable Impact</h4>
+              <h4>What I Did</h4>
               <ul>
-                <li><strong>1,200+ active students</strong> across 15 countries</li>
-                <li><strong>85% course completion rate</strong> (industry average: 15%)</li>
-                <li><strong>$120K annual recurring revenue</strong> at $9.99/month</li>
-                <li><strong>4.8/5 parent satisfaction</strong> rating</li>
-                <li><strong>60% student improvement</strong> in digital art skills (pre/post assessments)</li>
+                <li><strong>Listened first.</strong> Sent lightweight feedback surveys to existing users. Synthesised responses into three core pain points.</li>
+                <li><strong>Simplified the Course Library.</strong> Redesigned course cards to be visually-led — drawing app shown at a glance, one-line description, less dense copy.</li>
+                <li><strong>Reframed the pricing model.</strong> Introduced an "All Access Pass" monthly subscription priced just above a single course, and surfaced it across multiple decision points.</li>
+                <li><strong>Built it.</strong> Implemented the entire redesign myself on WordPress / WooCommerce / LearnDash, allowing fast iteration without engineering bottlenecks.</li>
               </ul>
             </div>
 
             <div class="case-study-section">
-              <h4>Key Technologies</h4>
-              <p>WordPress • LearnDash LMS • PHP • MySQL • Stripe API • Mailchimp API • Custom JavaScript • Responsive CSS Grid • SVG animations</p>
+              <h4>What Happened</h4>
+              <p>The visually-led course cards eliminated the "Procreate vs Sketchbook" confusion users had been reporting. Users overwhelmingly chose the All Access Pass over one-off courses once they could see the value of 100+ courses at one monthly price. Free trial sign-ups grew significantly after we surfaced the pass at multiple touchpoints. The next bottleneck — paid conversion below target — revealed itself, which led to two further redesigns covered in subsequent case studies.</p>
+            </div>
+
+            <div class="case-study-section">
+              <h4>How I Used AI in This Project</h4>
+              <p>I used Claude (Anthropic's AI assistant) and Claude Code throughout this work: prototyping HTML/CSS variations of redesigned components in hours rather than days; pressure-testing the All Access Pass pricing model before committing build time; and accelerating WordPress / WooCommerce / LearnDash customisations.</p>
+              <p>What AI didn't do: the design decisions, the user research synthesis, or the judgement calls on what to build. My workflow treats AI as a fast junior collaborator — useful for execution speed, but always reviewed by me on anything fact-based or strategic.</p>
+            </div>
+
+            <div class="case-study-section">
+              <h4>Tech Stack</h4>
+              <p>WordPress · WooCommerce · LearnDash LMS · Custom HTML/CSS · Claude Code (AI-assisted development) · Figma</p>
+            </div>
+
+            <div class="case-study-section">
+              <h4>Honest Note</h4>
+              <p>iNGENiO is an early-stage platform I co-founded, not a scaled product with millions of users. The "results" of this work are best understood as qualitative learnings and behavioural shifts from a small but real user base — not enterprise-scale metrics. What this demonstrates is design judgement, product thinking, and end-to-end ownership at the most formative stage of a digital product.</p>
             </div>
           </div>
         </div>
