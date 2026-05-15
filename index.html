@@ -3,404 +3,588 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mel Rowlands — Designer & Developer</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <title>Mel Rowlands — Senior Designer · Product UX with AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cal+Sans&family=Host+Grotesk:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: linear-gradient(135deg, #faf9f5 0%, #f5f2ea 100%);
-      --surface: #ffffff;
-      --surface-secondary: #fefefe;
-      --text: #1c1c1c;
-      --text-secondary: #2d3748;
-      --muted: #5a5a5a;
-      --muted-light: #718096;
-      --primary: #1a5757;
-      --primary-light: #2d7a7a;
-      --primary-dark: #153f43;
-      --accent: #d4af37;
-      --gradient: #d81b60;
-      --accent-light: #f5dab1;
-      --border: #e4ddd5;
-      --border-light: #f0ede6;
-      --shadow: rgba(26, 87, 87, 0.08);
-      --shadow-dark: rgba(26, 87, 87, 0.12);
-      --radius: 32px;
-      --radius-sm: 16px;
-      --radius-lg: 40px;
+      --bg: #ffffff;
+      --ink: #141414;
+      --ink-soft: #2c2c2c;
+      --muted: #5d5a5a;
+      --yellow: #f28d42;
+      --yellow-dark: #de711f;
+      --grey: #d9d9d9;
+      --grey-soft: #f3f2f0;
+      --line: #e6e4e0;
+      --display: 'Cal Sans', system-ui, -apple-system, sans-serif;
+      --body: 'Host Grotesk', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      --ease: cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
 
     body {
       min-height: 100vh;
       background: var(--bg);
-      color: var(--text);
-      font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      line-height: 1.6;      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;    }
-
-    .page {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 2rem 1.5rem 4rem;
+      color: var(--ink);
+      font-family: var(--body);
+      font-size: 1.0625rem;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 2.5rem;
+    }
+
+    /* ---------- Nav ---------- */
     .topnav {
-      display: flex;
-      justify-content: flex-end;
-      gap: 2.5rem;
-      padding-bottom: 2rem;
-      margin-bottom: 2rem;
-      border-bottom: 1px solid var(--border-light);
-      backdrop-filter: blur(10px);
-      background: rgba(255, 255, 255, 0.8);
-      border-radius: 0 0 var(--radius-sm) var(--radius-sm);
-      padding: 1.5rem 2rem;
-      margin: 0 -1.5rem 2rem -1.5rem;
       position: sticky;
       top: 0;
       z-index: 100;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .topnav .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      padding-top: 1.4rem;
+      padding-bottom: 1.4rem;
+    }
+
+    .brand {
+      font-family: var(--display);
+      font-size: 1.35rem;
+      color: var(--ink);
+      text-decoration: none;
+      letter-spacing: 0.01em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.4rem;
     }
 
     .nav-link {
-      color: var(--muted);
+      color: var(--ink);
       text-decoration: none;
-      font-weight: 500;
-      letter-spacing: 0.02em;
-      transition: all 0.2s ease;
+      font-size: 1.02rem;
+      letter-spacing: 0.01em;
       position: relative;
+      padding: 0.25rem 0;
+      transition: color 0.2s var(--ease);
     }
 
     .nav-link::after {
       content: '';
       position: absolute;
-      bottom: -4px;
       left: 0;
+      bottom: 0;
       width: 0;
       height: 2px;
-      background: var(--accent);
-      transition: width 0.3s ease;
+      background: var(--yellow);
+      transition: width 0.3s var(--ease);
     }
 
-    .nav-link:hover::after {
-      width: 100%;
-    }
+    .nav-link:hover { color: var(--muted); }
+    .nav-link:hover::after { width: 100%; }
 
-    .nav-link:hover {
-      color: var(--primary);
-      transform: translateY(-1px);
-    }
+    .nav-toggle { display: none; }
 
-    .header {
+    /* ---------- Hero ---------- */
+    .hero {
       display: grid;
-      grid-template-columns: minmax(320px, 1fr) minmax(280px, 430px);
-      align-items: center;
-      gap: 2rem;
+      grid-template-columns: 1fr 260px;
+      align-items: end;
+      gap: 1.5rem;
     }
 
-    .header-image {
-      width: 100%;
-      aspect-ratio: 4 / 5;
-      object-fit: cover;
-      border-radius: var(--radius);
-      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.08);
+    .hero-text {
+      padding: 8.5rem 0 4.5rem;
     }
 
-    .hero-panel {
-      background: var(--surface);
-      border: 1px solid var(--border-light);
-      border-radius: var(--radius);
-      padding: 2.5rem;
-      box-shadow: 0 32px 80px var(--shadow);
-      backdrop-filter: blur(10px);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-panel::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: var(--accent);
-    }
-
-    .eyebrow {
-      display: inline-block;
-      margin-bottom: 1.5rem;
-      color: var(--muted);
-      font-size: 0.9rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      font-weight: 600;
-      color: var(--accent);
-    }
-
-    .hero-title {
-      font-size: clamp(2.8rem, 5vw, 4rem);
+    .hero-greeting {
+      font-family: var(--display);
+      font-size: clamp(1.5rem, 2.4vw, 2rem);
       line-height: 1.1;
-      margin-bottom: 1.5rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      color: var(--text-secondary);
+      color: var(--muted);
+      margin-bottom: 0.2rem;
+    }
+
+    .hero-headline {
+      font-family: var(--display);
+      font-size: clamp(2.6rem, 5.4vw, 4rem);
+      line-height: 1.02;
+      margin-bottom: 1.1rem;
+    }
+
+    .hero-tagline {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--ink);
+      max-width: 52ch;
+      margin-bottom: 1.3rem;
     }
 
     .hero-copy {
-      font-size: 1.1rem;
-      color: var(--muted);
-      max-width: 44rem;
+      color: var(--ink-soft);
+      max-width: 64ch;
       margin-bottom: 2rem;
-      line-height: 1.7;
-      font-weight: 400;
     }
 
-    .hero-positioning {
-      font-size: 1.05rem;
-      color: var(--primary);
-      font-weight: 600;
-      margin-bottom: 1.25rem;
-      padding: 0.75rem 1rem;
-      background: var(--accent-light);
-      border-left: 3px solid var(--accent);
-      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-      letter-spacing: -0.005em;
+    .hero-visual {
+      position: relative;
+      height: 320px;
     }
 
+    .hero-photo {
+      position: absolute;
+      bottom: 0;
+      left: -150px;
+      height: 480px;
+      width: auto;
+      max-width: none;
+      display: block;
+      transition: transform 0.5s var(--ease);
+    }
+
+    .hero-visual:hover .hero-photo {
+      transform: scale(1.03);
+    }
+
+    /* ---------- Buttons ---------- */
     .button-group {
       display: flex;
       flex-wrap: wrap;
-      gap: 1rem;
-      margin-bottom: 1.5rem;
+      gap: 0.9rem;
     }
 
     .button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      border-radius: var(--radius-sm);
-      padding: 1rem 2rem;
-      font-weight: 600;
+      gap: 0.5rem;
+      font-family: var(--display);
       font-size: 0.95rem;
-      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-      cursor: pointer;
+      padding: 0.7rem 1.5rem;
       text-decoration: none;
-      position: relative;
-      overflow: hidden;
+      cursor: pointer;
       border: 2px solid transparent;
-    }
-
-    .button::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-      transition: left 0.5s;
-    }
-
-    .button:hover::before {
-      left: 100%;
+      transition: transform 0.22s var(--ease), background 0.22s var(--ease),
+                  color 0.22s var(--ease), box-shadow 0.22s var(--ease), border-color 0.22s var(--ease);
     }
 
     .button-primary {
-      background: linear-gradient(135deg, var(--primary), var(--primary-light));
-      color: white;
-      border-color: var(--primary);
-      box-shadow: 0 4px 16px var(--shadow);
-    }
-
-    .button-secondary {
-      background: var(--surface);
-      color: var(--text);
-      border-color: var(--border);
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+      background: var(--yellow);
+      color: #ffffff;
+      border-color: var(--yellow);
     }
 
     .button-primary:hover {
+      background: var(--yellow-dark);
+      border-color: var(--yellow-dark);
       transform: translateY(-2px);
-      box-shadow: 0 8px 24px var(--shadow-dark);
+      box-shadow: 0 12px 24px rgba(242, 141, 66, 0.35);
     }
 
-    .button-secondary:hover {
-      background: var(--accent-light);
-      border-color: var(--accent);
-      color: var(--primary);
-      transform: translateY(-1px);
-      box-shadow: 0 4px 16px rgba(230, 162, 60, 0.15);
+    .button-dark {
+      background: var(--ink);
+      color: #ffffff;
+      border-color: var(--ink);
     }
 
-    .stats {
+    .button-dark:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px rgba(20, 20, 20, 0.28);
+    }
+
+    .button-outline {
+      background: transparent;
+      color: var(--ink);
+      border-color: var(--ink);
+    }
+
+    .button-outline:hover {
+      background: var(--ink);
+      color: #ffffff;
+      transform: translateY(-2px);
+    }
+
+    /* ---------- Stats bar ---------- */
+    .stats-bar {
+      background: var(--grey);
+    }
+
+    .stats-bar .container {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1rem;
+      grid-template-columns: repeat(3, 1fr);
+      padding-top: 1.05rem;
+      padding-bottom: 1.05rem;
     }
 
     .stat {
-      background: linear-gradient(135deg, var(--surface), var(--surface-secondary));
-      border-radius: var(--radius-sm);
-      padding: 1.5rem;
-      text-align: center;
-      border: 1px solid var(--border-light);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .stat:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px var(--shadow);
-    }
-
-    .stat-value {
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: var(--accent);
-      margin-bottom: 0.25rem;
-    }
-
-    .stat-label {
       color: var(--muted);
-      font-size: 0.95rem;
+      font-size: 1.0625rem;
+      padding: 0 1.5rem;
+      transition: color 0.2s var(--ease);
     }
 
-    .section {
-      padding: 3rem 0;
-      scroll-margin-top: 100px;
-    }
+    .stat + .stat { border-left: 1px solid rgba(0, 0, 0, 0.22); }
+    .stat:first-child { padding-left: 0; }
+    .stat:hover { color: var(--ink); }
 
-    .section h2 {
-      font-size: clamp(2rem, 4vw, 2.5rem);
-      margin-bottom: 1.5rem;
+    .stat strong {
+      color: var(--ink);
       font-weight: 700;
-      letter-spacing: -0.02em;
-      color: var(--text-secondary);
-      position: relative;
+    }
+
+    /* ---------- Sections ---------- */
+    .section {
+      padding: 5.5rem 0;
+      scroll-margin-top: 90px;
+    }
+
+    .section-head h2 {
+      font-family: var(--display);
+      font-size: clamp(2rem, 4vw, 2.9rem);
+      line-height: 1.1;
+      margin-bottom: 1rem;
       opacity: 0;
       transform: translateY(20px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
+      transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
     }
 
-    .section h2.fade-in {
+    .section-head h2.fade-in {
       opacity: 1;
       transform: translateY(0);
     }
 
-    .section h2::after {
-      content: '';
-      position: absolute;
-      bottom: -8px;
-      left: 0;
-      width: 60px;
-      height: 3px;
-      background: var(--accent);
-      border-radius: 2px;
+    .rule {
+      width: 64px;
+      height: 4px;
+      background: var(--yellow);
+      margin-bottom: 1.5rem;
     }
 
     .section-copy {
-      color: var(--muted);
-      max-width: 48rem;
-      margin-bottom: 1.75rem;
+      color: var(--ink-soft);
+      max-width: 60ch;
+      margin-bottom: 3rem;
     }
 
-    .contact-email {
-      display: inline-block;
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: var(--primary);
-      text-decoration: underline;
-      text-decoration-color: var(--accent);
-      text-underline-offset: 4px;
-      text-decoration-thickness: 2px;
-      padding: 0.75rem 0;
-      min-height: 44px;
-      transition: color 0.2s ease;
-      word-break: break-word;
-    }
-
-    .contact-email:hover,
-    .contact-email:active {
-      color: var(--accent);
-    }
-
-    .capabilities-grid {
+    /* ---------- Featured project ---------- */
+    .featured {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 2rem;
+      grid-template-columns: 1fr 1fr;
+      gap: 3.5rem;
+      align-items: center;
+      margin-bottom: 4.5rem;
     }
 
+    .eyebrow {
+      display: inline-block;
+      font-family: var(--body);
+      font-weight: 700;
+      font-size: 0.82rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--yellow-dark);
+      margin-bottom: 1rem;
+    }
+
+    .featured-title {
+      font-family: var(--display);
+      font-size: clamp(1.5rem, 2.4vw, 2rem);
+      line-height: 1.2;
+      margin-bottom: 1.1rem;
+    }
+
+    .featured-copy {
+      color: var(--ink-soft);
+      margin-bottom: 1.8rem;
+    }
+
+    .featured-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .featured-visual {
+      background: var(--yellow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      overflow: hidden;
+    }
+
+    .featured-visual img {
+      width: 100%;
+      display: block;
+      transition: transform 0.5s var(--ease);
+    }
+
+    .featured-visual:hover img { transform: scale(1.03); }
+
+    .text-link {
+      font-family: var(--display);
+      font-size: 1.05rem;
+      color: var(--ink);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      cursor: pointer;
+      transition: color 0.2s var(--ease), gap 0.2s var(--ease);
+    }
+
+    .text-link:hover {
+      color: var(--yellow-dark);
+      gap: 0.75rem;
+    }
+
+    /* ---------- Work grid ---------- */
     .work-grid {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: repeat(2, 1fr);
       gap: 1.5rem;
     }
 
     .work-item {
-      background: linear-gradient(135deg, var(--surface), var(--surface-secondary));
-      border: 1px solid var(--border-light);
-      border-radius: var(--radius-sm);
-      padding: 1.5rem;
-      box-shadow: 0 4px 16px var(--shadow);
+      border: 1px solid var(--ink);
+      background: var(--bg);
       cursor: pointer;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .work-item::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(26, 87, 87, 0.02), transparent);
-      transition: left 0.6s;
-    }
-
-    .work-item:hover::before {
-      left: 100%;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
     }
 
     .work-item:hover {
-      transform: translateY(-6px) scale(1.02);
-      box-shadow: 0 20px 50px var(--shadow-dark);
-      border-color: var(--accent);
+      transform: translateY(-6px);
+      box-shadow: 0 22px 44px rgba(20, 20, 20, 0.16);
     }
 
-    .work-thumbnail {
-      display: block;
-      width: calc(100% + 3rem);
-      margin: -1.5rem -1.5rem 1.25rem -1.5rem;
-      aspect-ratio: 16 / 9;
+    .work-thumb {
+      background: var(--grey);
+      aspect-ratio: 3.6 / 1;
+      overflow: hidden;
+    }
+
+    .work-thumb img {
+      width: 100%;
+      height: 100%;
       object-fit: cover;
-      border-radius: var(--radius-sm) var(--radius-sm) 0 0;
-      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      display: block;
+      transition: transform 0.5s var(--ease);
     }
 
-    .work-item:hover .work-thumbnail {
-      transform: scale(1.04);
+    .work-item:hover .work-thumb img { transform: scale(1.05); }
+
+    .work-body {
+      padding: 0.85rem 1.35rem 1rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
     }
 
-    .work-item.case-study .work-thumbnail {
-      max-height: 360px;
-      object-position: center top;
+    .work-category {
+      font-weight: 700;
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--yellow-dark);
+      margin-bottom: 0.55rem;
     }
 
+    .work-title {
+      font-weight: 700;
+      font-size: 0.96rem;
+      color: var(--ink);
+      margin-bottom: 0.55rem;
+      letter-spacing: 0.01em;
+    }
 
+    .work-description {
+      color: var(--ink-soft);
+      font-size: 0.88rem;
+      line-height: 1.55;
+      margin-bottom: 1.1rem;
+    }
+
+    .work-link {
+      margin-top: auto;
+      font-family: var(--display);
+      font-size: 0.9rem;
+      color: var(--yellow-dark);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      cursor: pointer;
+      transition: gap 0.2s var(--ease), color 0.2s var(--ease);
+    }
+
+    .work-item:hover .work-link { gap: 0.7rem; }
+
+    /* ---------- Capabilities ---------- */
+    .capabilities-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .capability {
+      border: 1px solid var(--line);
+      padding: 2rem 1.9rem;
+      position: relative;
+      transition: transform 0.3s var(--ease), border-color 0.3s var(--ease), box-shadow 0.3s var(--ease);
+    }
+
+    .capability::before {
+      content: '';
+      position: absolute;
+      left: -1px;
+      top: -1px;
+      bottom: -1px;
+      width: 4px;
+      background: var(--yellow);
+      transform: scaleY(0);
+      transform-origin: top;
+      transition: transform 0.3s var(--ease);
+    }
+
+    .capability:hover {
+      transform: translateY(-4px);
+      border-color: var(--ink);
+      box-shadow: 0 16px 36px rgba(20, 20, 20, 0.1);
+    }
+
+    .capability:hover::before { transform: scaleY(1); }
+
+    .capability-number {
+      font-weight: 700;
+      font-size: 0.82rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--yellow-dark);
+      margin-bottom: 0.8rem;
+    }
+
+    .capability-title {
+      font-family: var(--display);
+      font-size: 1.2rem;
+      margin-bottom: 0.7rem;
+    }
+
+    .capability-copy {
+      color: var(--ink-soft);
+      font-size: 0.98rem;
+    }
+
+    /* ---------- About ---------- */
+    .about-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .about-intro p { margin-bottom: 1.3rem; color: var(--ink-soft); }
+    .about-intro p:last-child { margin-bottom: 0; }
+
+    .timeline { position: relative; padding-left: 1.75rem; }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 4px;
+      top: 6px;
+      bottom: 6px;
+      width: 2px;
+      background: var(--line);
+    }
+
+    .timeline-item { position: relative; margin-bottom: 2.1rem; }
+    .timeline-item:last-child { margin-bottom: 0; }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -1.75rem;
+      top: 6px;
+      width: 10px;
+      height: 10px;
+      background: var(--yellow);
+      border: 2px solid var(--bg);
+      box-shadow: 0 0 0 1px var(--yellow-dark);
+    }
+
+    .timeline-year {
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--yellow-dark);
+      margin-bottom: 0.3rem;
+    }
+
+    .timeline-role { font-weight: 700; color: var(--ink); }
+    .timeline-company { color: var(--muted); font-size: 0.95rem; margin-bottom: 0.5rem; }
+    .timeline-description { color: var(--ink-soft); font-size: 0.96rem; line-height: 1.6; }
+
+    /* ---------- Contact ---------- */
+    .contact-email {
+      display: inline-block;
+      font-family: var(--display);
+      font-size: clamp(1.4rem, 3vw, 2.2rem);
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 3px solid var(--yellow);
+      padding-bottom: 0.15rem;
+      margin-bottom: 2rem;
+      transition: color 0.2s var(--ease), border-color 0.2s var(--ease);
+    }
+
+    .contact-email:hover {
+      color: var(--yellow-dark);
+      border-color: var(--ink);
+    }
+
+    .contact-actions { display: flex; flex-wrap: wrap; gap: 0.9rem; }
+
+    /* ---------- Footer ---------- */
+    .site-footer {
+      border-top: 1px solid var(--line);
+      padding: 2.5rem 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .site-footer .container {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    /* ---------- Gallery modal ---------- */
     .gallery-modal {
       display: none;
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(28, 28, 28, 0.95);
+      inset: 0;
+      background: rgba(20, 20, 20, 0.95);
       backdrop-filter: blur(8px);
       z-index: 1000;
       justify-content: center;
@@ -408,20 +592,11 @@
       animation: fadeIn 0.3s ease;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-    .gallery-modal.active {
-      display: flex;
-    }
+    .gallery-modal.active { display: flex; }
 
-    .gallery-content {
-      max-width: 95vw;
-      max-height: 95vh;
-      position: relative;
-    }
+    .gallery-content { max-width: 95vw; max-height: 95vh; position: relative; }
 
     .gallery-media-container {
       position: relative;
@@ -437,17 +612,13 @@
       max-width: 100%;
       max-height: 90vh;
       object-fit: contain;
-      border-radius: 8px;
       box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
       display: none;
     }
 
-    .gallery-image.active {
-      display: block;
-    }
+    .gallery-image.active { display: block; }
 
     .gallery-video {
-      border-radius: 8px;
       box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
       display: none;
       width: 100%;
@@ -457,9 +628,7 @@
       min-height: 65vh;
     }
 
-    .gallery-video.active {
-      display: block;
-    }
+    .gallery-video.active { display: block; }
 
     .gallery-video.website-preview {
       aspect-ratio: auto;
@@ -493,35 +662,19 @@
     }
 
     .gallery-nav:hover {
-      background: var(--accent);
-      border-color: var(--accent);
+      background: var(--yellow);
+      border-color: var(--yellow);
       transform: translateY(-50%) scale(1.1);
-      box-shadow: 0 8px 28px rgba(212, 175, 55, 0.55);
+      box-shadow: 0 8px 28px rgba(242, 141, 66, 0.55);
       animation: none;
     }
 
-    .gallery-prev {
-      left: 16px;
-    }
-
-    .gallery-next {
-      right: 16px;
-    }
+    .gallery-prev { left: 16px; }
+    .gallery-next { right: 16px; }
 
     @keyframes navPulse {
-      0%, 100% { box-shadow: 0 6px 24px rgba(0, 0, 0, 0.55), 0 0 0 0 rgba(212, 175, 55, 0.6); }
-      50%      { box-shadow: 0 6px 24px rgba(0, 0, 0, 0.55), 0 0 0 12px rgba(212, 175, 55, 0); }
-    }
-
-    @media (max-width: 560px) {
-      .gallery-nav {
-        width: 52px;
-        height: 52px;
-        font-size: 2.1rem;
-      }
-
-      .gallery-prev { left: 8px; }
-      .gallery-next { right: 8px; }
+      0%, 100% { box-shadow: 0 6px 24px rgba(0, 0, 0, 0.55), 0 0 0 0 rgba(242, 141, 66, 0.6); }
+      50%      { box-shadow: 0 6px 24px rgba(0, 0, 0, 0.55), 0 0 0 12px rgba(242, 141, 66, 0); }
     }
 
     .gallery-close {
@@ -543,9 +696,7 @@
       z-index: 10;
     }
 
-    .gallery-close:hover {
-      background: rgba(255, 255, 255, 0.3);
-    }
+    .gallery-close:hover { background: rgba(255, 255, 255, 0.3); }
 
     .gallery-title {
       position: absolute;
@@ -557,7 +708,6 @@
       text-align: left;
       background: rgba(0, 0, 0, 0.8);
       padding: 0.75rem 1.25rem;
-      border-radius: 12px;
       backdrop-filter: blur(12px);
       z-index: 10;
       max-width: calc(100% - 40px);
@@ -576,553 +726,335 @@
       border-radius: 20px;
     }
 
-    .work-category {
-      font-weight: 700;
-      color: var(--primary);
-      margin-bottom: 0.75rem;
-      font-size: 0.95rem;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
+    /* ---------- Responsive ---------- */
+    @media (max-width: 980px) {
+      .container { padding: 0 1.75rem; }
+      .hero { grid-template-columns: 1fr; gap: 2.5rem; }
+      .hero-text { padding: 3rem 0 0; }
+      .hero-visual { width: 240px; height: auto; order: -1; margin: 2.5rem 0 0; overflow: hidden; }
+      .hero-photo { position: static; transform: none; height: auto; width: 100%; }
+      .hero-visual:hover .hero-photo { transform: scale(1.03); }
+      .featured { grid-template-columns: 1fr; gap: 2rem; }
+      .featured-visual { order: -1; }
+      .capabilities-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-section { grid-template-columns: 1fr; gap: 2.5rem; }
     }
 
-    .work-title {
-      font-size: 1.05rem;
-      margin-bottom: 0.75rem;
-      font-weight: 600;
-    }
-
-    .work-item.case-study {
-      grid-column: 1 / -1;
-      cursor: default;
-    }
-
-    .work-eyebrow {
-      display: inline-block;
-      font-size: 0.78rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 0.75rem;
-    }
-
-    .case-study-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem 1.5rem;
-      align-items: center;
-      margin-top: 1.5rem;
-    }
-
-    .case-study-actions .button {
-      padding: 0.85rem 1.6rem;
-      font-size: 0.92rem;
-    }
-
-    .case-study-actions .gallery-link {
-      margin-top: 0;
-    }
-
-    .case-study-content {
-      margin-top: 1.5rem;
-      padding-top: 1.5rem;
-      border-top: 1px solid var(--border-light);
-    }
-
-    .case-study-section {
-      margin-bottom: 1.5rem;
-    }
-
-    .case-study-section h4 {
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--primary);
-      margin-bottom: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-    }
-
-    .case-study-section p {
-      color: var(--muted);
-      line-height: 1.7;
-      margin-bottom: 1rem;
-    }
-
-    .case-study-section ul {
-      color: var(--muted);
-      line-height: 1.7;
-      margin: 0;
-      padding-left: 1.5rem;
-    }
-
-    .case-study-section li {
-      margin-bottom: 0.5rem;
-    }
-
-    .case-study-section strong {
-      color: var(--text-secondary);
-      font-weight: 600;
-    }
-
-    .gallery-link {
-      margin-top: 1rem;
-      color: var(--accent);
-      font-weight: 600;
-      font-size: 0.9rem;
-      cursor: pointer;
-      transition: color 0.2s ease;
-    }
-
-    .gallery-link:hover {
-      color: var(--primary);
-    }
-
-    .work-item.expanded {
-      margin-bottom: 2rem;
-    }
-
-    .capability {
-      background: linear-gradient(135deg, var(--surface), var(--surface-secondary));
-      border: 1px solid var(--border-light);
-      border-radius: var(--radius-sm);
-      padding: 2rem;
-      box-shadow: 0 4px 16px var(--shadow);
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .capability::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 4px;
-      height: 100%;
-      background: var(--accent);
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    .capability:hover::before {
-      opacity: 1;
-    }
-
-    .capability:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 32px var(--shadow-dark);
-      border-color: var(--border);
-    }
-
-    .capability-number {
-      font-weight: 700;
-      color: var(--accent);
-      margin-bottom: 0.75rem;
-    }
-
-    .capability-title {
-      font-size: 1.05rem;
-      margin-bottom: 0.75rem;
-    }
-
-    .capability-copy {
-      color: var(--muted);
-      line-height: 1.7;
-      font-size: 0.98rem;
-    }
-
-    .about-section {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      align-items: start;
-    }
-
-    .about-intro {
-      max-width: 48rem;
-    }
-
-    .about-intro p {
-      margin-bottom: 1.5rem;
-    }
-
-    .about-intro p:last-child {
-      margin-bottom: 0;
-    }
-
-    .timeline {
-      position: relative;
-    }
-
-    .timeline::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      width: 2px;
-      background: var(--border);
-    }
-
-    .timeline-item {
-      position: relative;
-      padding-left: 2rem;
-      margin-bottom: 2rem;
-    }
-
-    .timeline-item::before {
-      content: '';
-      position: absolute;
-      left: -6px;
-      top: 8px;
-      width: 10px;
-      height: 10px;
-      background: var(--accent);
-      border-radius: 50%;
-      border: 2px solid var(--surface);
-    }
-
-    .timeline-year {
-      font-weight: 700;
-      color: var(--accent);
-      margin-bottom: 0.5rem;
-    }
-
-    .timeline-role {
-      font-weight: 600;
-      margin-bottom: 0.25rem;
-    }
-
-    .timeline-company {
-      color: var(--muted);
-      font-size: 0.95rem;
-      margin-bottom: 0.75rem;
-    }
-
-    .timeline-description {
-      color: var(--muted);
-      line-height: 1.6;
-      font-size: 0.95rem;
-    }
-
-    @media (max-width: 920px) {
-      .about-section {
-        grid-template-columns: 1fr;
-        gap: 2rem;
+    @media (max-width: 720px) {
+      .nav-links {
+        position: fixed;
+        inset: 0 0 0 auto;
+        width: min(78vw, 320px);
+        background: var(--bg);
+        flex-direction: column;
+        gap: 1.5rem;
+        padding: 6rem 2rem 2rem;
+        transform: translateX(100%);
+        transition: transform 0.35s var(--ease);
+        box-shadow: -20px 0 60px rgba(0, 0, 0, 0.12);
       }
-    }
-
-    @media (max-width: 920px) {
-      .capabilities-grid {
-        grid-template-columns: 1fr;
+      .nav-links.open { transform: translateX(0); }
+      .nav-toggle {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+        width: 40px;
+        height: 40px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        z-index: 110;
       }
-
-      .work-grid {
-        grid-template-columns: 1fr;
+      .nav-toggle span {
+        display: block;
+        height: 2px;
+        width: 24px;
+        background: var(--ink);
+        transition: transform 0.3s var(--ease), opacity 0.3s var(--ease);
       }
-    }
+      .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+      .nav-toggle.open span:nth-child(2) { opacity: 0; }
+      .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-    @media (max-width: 860px) {
-      .header {
-        grid-template-columns: 1fr;
-      }
-
-      .stats {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
+      .work-grid { grid-template-columns: 1fr; }
+      .capabilities-grid { grid-template-columns: 1fr; }
+      .stats-bar .container { grid-template-columns: 1fr; gap: 1rem; }
+      .stat { padding: 0; }
+      .stat + .stat { border-left: none; padding-top: 1rem; border-top: 1px solid rgba(0,0,0,0.18); }
+      .section { padding: 4rem 0; }
+      .button { flex: 1 1 auto; }
     }
 
     @media (max-width: 560px) {
-      .page {
-        padding: 1.5rem 1rem;
-      }
-
-      .button-group {
-        flex-direction: column;
-      }
-
-      .stats {
-        grid-template-columns: 1fr;
-      }
+      .gallery-nav { width: 52px; height: 52px; font-size: 2.1rem; }
+      .gallery-prev { left: 8px; }
+      .gallery-next { right: 8px; }
     }
 
     @media print {
-      @page {
-        margin: 1.5cm;
-        size: A4;
-      }
-
-      * {
-        -webkit-print-color-adjust: exact !important;
-        print-color-adjust: exact !important;
-      }
-
-      body {
-        background: white !important;
-        font-size: 10pt;
-        line-height: 1.4;
-      }
-
-      .page {
-        max-width: 100%;
-        padding: 0;
-      }
-
-      .topnav,
-      .button-group,
-      .gallery-link,
-      .gallery-modal,
-      .download-pdf-btn,
-      .download-pdf-wrapper {
-        display: none !important;
-      }
-
-      .section h2 {
-        opacity: 1 !important;
-        transform: none !important;
-        font-size: 16pt;
-        page-break-after: avoid;
-      }
-
-      .header {
-        grid-template-columns: 2fr 1fr;
-        gap: 1.5rem;
-        page-break-after: avoid;
-      }
-
-      .hero-panel {
-        box-shadow: none;
-        border: 1px solid #ddd;
-        padding: 1.5rem;
-      }
-
-      .hero-title {
-        font-size: 22pt;
-        margin-bottom: 0.75rem;
-      }
-
-      .hero-copy,
-      .hero-positioning {
-        font-size: 10pt;
-        margin-bottom: 0.75rem;
-      }
-
-      .header-image {
-        box-shadow: none;
-      }
-
-      .section {
-        padding: 1rem 0;
-      }
-
-      .case-study-content {
-        display: block !important;
-      }
-
-      .work-item,
-      .capability,
-      .timeline-item {
-        page-break-inside: avoid;
-        box-shadow: none !important;
-        border: 1px solid #ddd;
-      }
-
-      .capability {
-        padding: 1rem;
-      }
-
-      .work-thumbnail {
-        max-height: 200px;
-      }
-
-      .stat {
-        box-shadow: none;
-        border: 1px solid #ddd;
-        padding: 0.75rem;
-      }
-
-      .contact-email {
-        color: #1a5757 !important;
-      }
+      @page { margin: 1.5cm; size: A4; }
+      * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+      body { background: white !important; font-size: 10pt; line-height: 1.4; }
+      .container { max-width: 100%; padding: 0; }
+      .topnav, .nav-toggle, .button-group, .featured-actions, .work-link,
+      .gallery-modal, .contact-actions, .site-footer { display: none !important; }
+      .section { padding: 1rem 0; }
+      .section-head h2 { opacity: 1 !important; transform: none !important; font-size: 16pt; page-break-after: avoid; }
+      .hero { grid-template-columns: 2fr 1fr; gap: 1.5rem; }
+      .hero-text { padding: 0; }
+      .hero-visual { min-height: 0; }
+      .hero-photo { filter: grayscale(100%); width: 100%; }
+      .work-item, .capability, .timeline-item, .featured { page-break-inside: avoid; box-shadow: none !important; }
+      .work-item { border: 1px solid #ccc; }
+      .stats-bar { border: 1px solid #ddd; }
     }
   </style>
 </head>
 <body>
-  <div class="page">
-    <nav class="topnav">
-      <a class="nav-link" href="#work">Work</a>
-      <a class="nav-link" href="/case-studies/">Case Studies</a>
-      <a class="nav-link" href="#capabilities">Capabilities</a>
-      <a class="nav-link" href="#about">About</a>
-      <a class="nav-link" href="#contact">Contact</a>
-    </nav>
+  <nav class="topnav">
+    <div class="container">
+      <a class="brand" href="#top">Mel Rowlands</a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-links" id="nav-links">
+        <a class="nav-link" href="#work">work</a>
+        <a class="nav-link" href="/case-studies/">case studies</a>
+        <a class="nav-link" href="#capabilities">capabilities</a>
+        <a class="nav-link" href="#about">about</a>
+        <a class="nav-link" href="#contact">contact</a>
+      </div>
+    </div>
+  </nav>
 
-    <header class="header">
-      <div class="hero-panel">
-        <div class="eyebrow">Senior Designer · Product UX · AI-Augmented Shipping</div>
-        <h1 class="hero-title">Hi, I'm Mel. A senior designer who ships product UX with AI.</h1>
-        <p class="hero-positioning">20+ years of design depth meets modern AI tooling. I design product UX in Figma and use AI to ship it — landing pages, web apps, and learning platforms. Built for startups and small teams who need senior design at startup speed.</p>
-        <p class="hero-copy">Currently designing in Figma, building with Claude Code and Cursor, and shipping real products on WordPress, WooCommerce, and LearnDash. Available for remote contract work globally.</p>
-        <div class="button-group">
-          <a class="button button-primary" href="#work">View Work</a>
-          <a class="button button-primary" href="mailto:melanie.rowlands@gmail.com?subject=Hiring%20enquiry" style="background: linear-gradient(135deg, var(--gradient), #b91456); border-color: var(--gradient);">Hire Me</a>
-          <a class="button button-secondary" href="assets/cv.pdf" download="Mel-Rowlands-CV.pdf">Download CV</a>
-          <a class="button button-secondary" href="#contact">Start a project</a>
-        </div>
-        <div class="stats">
-          <div class="stat">
-            <div class="stat-value">20+</div>
-            <div class="stat-label">Years experience</div>
+  <main id="top">
+    <!-- ---------- Hero ---------- -->
+    <section class="hero-wrap">
+      <div class="container">
+        <div class="hero">
+          <div class="hero-text">
+            <p class="hero-greeting">I'm Mel —</p>
+            <h1 class="hero-headline">A design engineer.</h1>
+            <p class="hero-tagline">AI-native UX &amp; design engineer specialising in EdTech and learning platforms.</p>
+            <p class="hero-copy">20+ years of design depth paired with modern AI tooling. I design product UX in Figma and ship it fast — web apps, landing pages, and learning platforms — for startups and small teams.</p>
+            <div class="button-group">
+              <a class="button button-primary" href="#work">View Work</a>
+              <a class="button button-outline" href="assets/cv.pdf" download="Mel-Rowlands-CV.pdf">Download CV</a>
+            </div>
           </div>
-          <div class="stat">
-            <div class="stat-value">50+</div>
-            <div class="stat-label">Projects launched</div>
-          </div>
-          <div class="stat">
-            <div class="stat-value">Cape Town</div>
-            <div class="stat-label">Working globally</div>
+          <div class="hero-visual">
+            <img class="hero-photo" src="assets/mel_headshot_2.png" alt="Mel Rowlands, design engineer">
           </div>
         </div>
       </div>
-      <img class="header-image" src="assets/header_image.png" alt="Mel Rowlands, designer and developer">
-    </header>
+    </section>
 
+    <!-- ---------- Stats bar ---------- -->
+    <div class="stats-bar">
+      <div class="container">
+        <div class="stat"><strong>20+</strong> years experience</div>
+        <div class="stat"><strong>50+</strong> projects launched</div>
+        <div class="stat"><strong>Cape Town</strong> working globally</div>
+      </div>
+    </div>
+
+    <!-- ---------- Work ---------- -->
     <section id="work" class="section">
-      <h2>Work</h2>
-      <p class="section-copy">A curated selection of recent work spanning platform development, design collaborations, and digital product builds.</p>
-      <div class="work-grid">
-        <div class="work-item case-study">
-          <img class="work-thumbnail" src="assets/ingenio_thumbnail.png" alt="iNGENiO Education learning platform" loading="lazy">
-          <div class="work-eyebrow">Featured project</div>
-          <div class="work-category">Founder & Lead Designer</div>
-          <div class="work-title">iNGENiO Education</div>
-          <div class="work-description">Digital art learning platform for kids aged 5–18. Designed and built end-to-end across UX, IA, and platform implementation. A three-part product design journey through acquisition, activation, and engagement.</div>
-          <div class="case-study-actions">
-            <a class="button button-primary" href="/case-studies/">View Case Studies →</a>
-            <a class="gallery-link" onclick="openGallery(['https://ingenioeducation.com', 'assets/Ingenio Courses Dashboard.png', 'https://www.loom.com/embed/7363ef8a63fd4c54adedb5792b9c79d5?hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true', 'assets/Ingenio Course Description.png', 'https://www.loom.com/embed/025878e841f94e9a829ccb8e5d54e7ed?hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true', 'assets/Ingenio Course Example.png'], ['iNGENiO Education — Live Site', 'Courses Dashboard', 'Courses Navigation Demo', 'Course Description Demo', 'Lesson Interface Demo', 'Course Content Example'])">View Platform Tour →</a>
+      <div class="container">
+        <div class="section-head">
+          <h2>Work</h2>
+          <div class="rule"></div>
+        </div>
+        <p class="section-copy">A curated selection of recent work spanning platform development, design collaborations, and digital product builds.</p>
+
+        <!-- Featured project -->
+        <div class="featured">
+          <div class="featured-text">
+            <span class="eyebrow">Featured Project</span>
+            <h3 class="featured-title">Co-founder &amp; Lead Designer<br>iNGENiO Education</h3>
+            <p class="featured-copy">Digital art learning platform for kids aged 5–18. Designed and built end-to-end across UX, AI, and platform implementation. A three-part product design journey through acquisition, activation, and engagement.</p>
+            <div class="featured-actions">
+              <a class="button button-primary" href="/case-studies/">View Case Studies</a>
+              <span class="text-link" onclick="openGallery(['https://ingenioeducation.com', 'assets/Ingenio Courses Dashboard.png', 'https://www.loom.com/embed/7363ef8a63fd4c54adedb5792b9c79d5?hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true', 'assets/Ingenio Course Description.png', 'https://www.loom.com/embed/025878e841f94e9a829ccb8e5d54e7ed?hide_owner=true&hide_share=true&hide_title=true&hideEmbedTopBar=true', 'assets/Ingenio Course Example.png'], ['iNGENiO Education — Live Site', 'Courses Dashboard', 'Courses Navigation Demo', 'Course Description Demo', 'Lesson Interface Demo', 'Course Content Example'])">Platform Tour →</span>
+            </div>
+          </div>
+          <div class="featured-visual">
+            <img src="assets/ingenio site no bground.png" alt="iNGENiO Education learning platform">
           </div>
         </div>
-        <div class="work-item" onclick="openGallery(['assets/nested_bean_1.png', 'assets/nested_bean_2.png', 'assets/studio-e-fabrics-1.jpg', 'assets/studio-e-fabrics-3.jpg', 'assets/mountingbloc_collab_surface_pattern.png'], ['Nested Bean: Zen Sack Wearable Blanket', 'Nested Bean: Zen Sack — Monogram Gold', 'Studio E Fabrics: Welcome To Our Neighborhood Collection', 'Studio E Fabrics: Welcome To Our Neighborhood — Fox Print', 'Mounting Bloc: Rainbow Ponies Baselayer'])">
-          <img class="work-thumbnail" src="assets/surface_pattern_thumbnail.png" alt="Surface pattern designs licensed to Studio E Fabrics and Nested Bean" loading="lazy">
-          <div class="work-category">Licensing Collaborations</div>
-          <div class="work-title">Nested Bean, Studio E Fabrics, Mounting Bloc</div>
-          <div class="work-description">International pattern licensing partnerships. Surface pattern designs licensed to major US fabric companies, reaching global markets through established distribution channels.</div>
-          <div class="gallery-link" onclick="event.stopPropagation(); openGallery(['assets/nested_bean_1.png', 'assets/nested_bean_2.png', 'assets/studio-e-fabrics-1.jpg', 'assets/studio-e-fabrics-3.jpg', 'assets/mountingbloc_collab_surface_pattern.png'], ['Nested Bean: Zen Sack Wearable Blanket', 'Nested Bean: Zen Sack — Monogram Gold', 'Studio E Fabrics: Welcome To Our Neighborhood Collection', 'Studio E Fabrics: Welcome To Our Neighborhood — Fox Print', 'Mounting Bloc: Rainbow Ponies Baselayer'])">View Designs →</div>
-        </div>
-        <div class="work-item" onclick="openGallery(['assets/yuppiechef_packaging_1.png', 'assets/yuppiechef_packaging_2.png', 'assets/sarah-graham-nourish.png', 'assets/Sarah-Graham-Nourish36318.jpg', 'assets/Sarah-Graham-Nourish36387.jpg', 'assets/jimmy-public-gin.jpg', 'assets/Shackleton Vodka Iced Tea.png', 'assets/Shackleton vodka iced tea labels.png'], ['Humble + Mash (Yuppiechef): Wine Glass Packaging', 'Humble + Mash (Yuppiechef): Wine Glass Box', 'Sarah Graham Nourish: Power Ball Boxes', 'Sarah Graham Nourish: Coconut Bliss Power Ball', 'Sarah Graham Nourish: Cacao & Cranberry Power Ball', 'Jimmy Public: Classic Gin', 'Shackleton: Vodka Iced Tea Mixed Case', 'Shackleton: Spirit Cooler Labels (Fynbos & Lemon)'])">
-          <img class="work-thumbnail" src="assets/Sarah-Graham-Nourish36318.jpg" alt="Sarah Graham Nourish packaging" loading="lazy">
-          <div class="work-category">Packaging Design</div>
-          <div class="work-title">Yuppiechef, Sarah Graham, Jimmy Public, Shackleton</div>
-          <div class="work-description">Brand and packaging systems built during seven years co-running Fineday Design Studio — logo, retail packaging, and brand guidelines for food and drinks businesses, with work that's reached shelves locally and abroad.</div>
-          <div class="gallery-link" onclick="event.stopPropagation(); openGallery(['assets/yuppiechef_packaging_1.png', 'assets/yuppiechef_packaging_2.png', 'assets/sarah-graham-nourish.png', 'assets/Sarah-Graham-Nourish36318.jpg', 'assets/Sarah-Graham-Nourish36387.jpg', 'assets/jimmy-public-gin.jpg', 'assets/Shackleton Vodka Iced Tea.png', 'assets/Shackleton vodka iced tea labels.png'], ['Humble + Mash (Yuppiechef): Wine Glass Packaging', 'Humble + Mash (Yuppiechef): Wine Glass Box', 'Sarah Graham Nourish: Power Ball Boxes', 'Sarah Graham Nourish: Coconut Bliss Power Ball', 'Sarah Graham Nourish: Cacao & Cranberry Power Ball', 'Jimmy Public: Classic Gin', 'Shackleton: Vodka Iced Tea Mixed Case', 'Shackleton: Spirit Cooler Labels (Fynbos & Lemon)'])">View Designs →</div>
-        </div>
-        <div class="work-item" onclick="openGallery(['https://yourhuddle.lovable.app/demo'], ['The Huddle App — Live Demo'])">
-          <img class="work-thumbnail" src="assets/huddle_app_lighter_bground.png" alt="The Huddle App interface" loading="lazy">
-          <div class="work-category">App Build</div>
-          <div class="work-title">The Huddle App</div>
-          <div class="work-description">Mobile application development combining UX design with technical implementation. End-to-end app development from concept through to deployment.</div>
-          <div class="gallery-link" onclick="event.stopPropagation(); openGallery(['https://yourhuddle.lovable.app/demo'], ['The Huddle App — Live Demo'])">View Live Demo →</div>
-        </div>
-        <div class="work-item" onclick="openGallery(['https://melanierowlands-cyber.github.io/thelabyrinthmassages/', 'https://style-cape-glow.vercel.app/', 'https://melanierowlands-cyber.github.io/ganz-africa-mockup-2/'], ['The Labyrinth Massages', 'Kate Hair', 'Ganz Africa'])">
-          <img class="work-thumbnail" src="assets/website_thumbnail.png" alt="Website builds for The Labyrinth Massages, Kate Hair, and Ganz Africa" loading="lazy">
-          <div class="work-category">Website Design and Build</div>
-          <div class="work-title">Ganz Africa, Labyrinth Massage, Kate Hair</div>
-          <div class="work-description">Complete website design and development for diverse client portfolios. Custom WordPress builds with unique branding, responsive layouts, and optimized user experiences.</div>
-          <div class="gallery-link" onclick="event.stopPropagation(); openGallery(['https://melanierowlands-cyber.github.io/thelabyrinthmassages/', 'https://style-cape-glow.vercel.app/', 'https://melanierowlands-cyber.github.io/ganz-africa-mockup-2/'], ['The Labyrinth Massages', 'Kate Hair', 'Ganz Africa'])">View Live Sites →</div>
+
+        <!-- Work grid -->
+        <span class="eyebrow">More Work</span>
+        <div class="work-grid">
+          <div class="work-item" onclick="openGallery(['assets/nested_bean_1.png', 'assets/nested_bean_2.png', 'assets/studio-e-fabrics-1.jpg', 'assets/studio-e-fabrics-3.jpg', 'assets/mountingbloc_collab_surface_pattern.png'], ['Nested Bean: Zen Sack Wearable Blanket', 'Nested Bean: Zen Sack — Monogram Gold', 'Studio E Fabrics: Welcome To Our Neighborhood Collection', 'Studio E Fabrics: Welcome To Our Neighborhood — Fox Print', 'Mounting Bloc: Rainbow Ponies Baselayer'])">
+            <div class="work-thumb">
+              <img src="assets/surface_pattern_thumbnail.png" alt="Surface pattern designs licensed to Studio E Fabrics and Nested Bean" loading="lazy">
+            </div>
+            <div class="work-body">
+              <div class="work-category">Licensing Collaborations</div>
+              <div class="work-title">Nested Bean, Studio E Fabrics, Mounting Bloc</div>
+              <div class="work-description">International pattern licensing partnerships. Surface pattern designs licensed to major US fabric companies, reaching global markets through established distribution channels.</div>
+              <span class="work-link" onclick="event.stopPropagation(); openGallery(['assets/nested_bean_1.png', 'assets/nested_bean_2.png', 'assets/studio-e-fabrics-1.jpg', 'assets/studio-e-fabrics-3.jpg', 'assets/mountingbloc_collab_surface_pattern.png'], ['Nested Bean: Zen Sack Wearable Blanket', 'Nested Bean: Zen Sack — Monogram Gold', 'Studio E Fabrics: Welcome To Our Neighborhood Collection', 'Studio E Fabrics: Welcome To Our Neighborhood — Fox Print', 'Mounting Bloc: Rainbow Ponies Baselayer'])">View Designs →</span>
+            </div>
+          </div>
+
+          <div class="work-item" onclick="openGallery(['assets/yuppiechef_packaging_1.png', 'assets/yuppiechef_packaging_2.png', 'assets/sarah-graham-nourish.png', 'assets/Sarah-Graham-Nourish36318.jpg', 'assets/Sarah-Graham-Nourish36387.jpg', 'assets/jimmy-public-gin.jpg', 'assets/Shackleton Vodka Iced Tea.png', 'assets/Shackleton vodka iced tea labels.png'], ['Humble + Mash (Yuppiechef): Wine Glass Packaging', 'Humble + Mash (Yuppiechef): Wine Glass Box', 'Sarah Graham Nourish: Power Ball Boxes', 'Sarah Graham Nourish: Coconut Bliss Power Ball', 'Sarah Graham Nourish: Cacao & Cranberry Power Ball', 'Jimmy Public: Classic Gin', 'Shackleton: Vodka Iced Tea Mixed Case', 'Shackleton: Spirit Cooler Labels (Fynbos & Lemon)'])">
+            <div class="work-thumb">
+              <img src="assets/Sarah-Graham-Nourish36318.jpg" alt="Sarah Graham Nourish packaging" loading="lazy">
+            </div>
+            <div class="work-body">
+              <div class="work-category">Packaging Design</div>
+              <div class="work-title">Yuppiechef, Sarah Graham, Jimmy Public, Shackleton</div>
+              <div class="work-description">Brand and packaging systems built during seven years co-running Fineday Design Studio — logo, retail packaging, and brand guidelines for food and drinks businesses, with work that's reached shelves locally and abroad.</div>
+              <span class="work-link" onclick="event.stopPropagation(); openGallery(['assets/yuppiechef_packaging_1.png', 'assets/yuppiechef_packaging_2.png', 'assets/sarah-graham-nourish.png', 'assets/Sarah-Graham-Nourish36318.jpg', 'assets/Sarah-Graham-Nourish36387.jpg', 'assets/jimmy-public-gin.jpg', 'assets/Shackleton Vodka Iced Tea.png', 'assets/Shackleton vodka iced tea labels.png'], ['Humble + Mash (Yuppiechef): Wine Glass Packaging', 'Humble + Mash (Yuppiechef): Wine Glass Box', 'Sarah Graham Nourish: Power Ball Boxes', 'Sarah Graham Nourish: Coconut Bliss Power Ball', 'Sarah Graham Nourish: Cacao & Cranberry Power Ball', 'Jimmy Public: Classic Gin', 'Shackleton: Vodka Iced Tea Mixed Case', 'Shackleton: Spirit Cooler Labels (Fynbos & Lemon)'])">View Designs →</span>
+            </div>
+          </div>
+
+          <div class="work-item" onclick="openGallery(['https://yourhuddle.lovable.app/demo'], ['The Huddle App — Live Demo'])">
+            <div class="work-thumb">
+              <img src="assets/huddle_app_lighter_bground.png" alt="The Huddle App interface" loading="lazy">
+            </div>
+            <div class="work-body">
+              <div class="work-category">App Build</div>
+              <div class="work-title">The Huddle App</div>
+              <div class="work-description">Mobile application development combining UX design with technical implementation. End-to-end app development from concept through to deployment.</div>
+              <span class="work-link" onclick="event.stopPropagation(); openGallery(['https://yourhuddle.lovable.app/demo'], ['The Huddle App — Live Demo'])">View Live Demo →</span>
+            </div>
+          </div>
+
+          <div class="work-item" onclick="openGallery(['https://melanierowlands-cyber.github.io/thelabyrinthmassages/', 'https://style-cape-glow.vercel.app/', 'https://melanierowlands-cyber.github.io/ganz-africa-mockup-2/'], ['The Labyrinth Massages', 'Kate Hair', 'Ganz Africa'])">
+            <div class="work-thumb">
+              <img src="assets/website_thumbnail.png" alt="Website builds for The Labyrinth Massages, Kate Hair, and Ganz Africa" loading="lazy">
+            </div>
+            <div class="work-body">
+              <div class="work-category">Website Design &amp; Build</div>
+              <div class="work-title">Ganz Africa, Labyrinth Massage, Kate Hair</div>
+              <div class="work-description">Complete website design and development for diverse client portfolios. Custom WordPress builds with unique branding, responsive layouts, and optimized user experiences.</div>
+              <span class="work-link" onclick="event.stopPropagation(); openGallery(['https://melanierowlands-cyber.github.io/thelabyrinthmassages/', 'https://style-cape-glow.vercel.app/', 'https://melanierowlands-cyber.github.io/ganz-africa-mockup-2/'], ['The Labyrinth Massages', 'Kate Hair', 'Ganz Africa'])">View Live Sites →</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
+    <!-- ---------- Capabilities ---------- -->
     <section id="capabilities" class="section">
-      <h2>Capabilities</h2>
-      <p class="section-copy">A wide toolkit, built over time — used in service of what a project actually needs.</p>
-      <div class="capabilities-grid">
-        <div class="capability">
-          <div class="capability-number">01 · Product UX Design</div>
-          <div class="capability-title">Figma-led UX design</div>
-          <div class="capability-copy">Wireframes, user flows, IA, and interfaces that feel right to use. 20+ years of design depth means strong instincts on hierarchy, clarity, and what to leave out.</div>
+      <div class="container">
+        <div class="section-head">
+          <h2>Capabilities</h2>
+          <div class="rule"></div>
         </div>
-        <div class="capability">
-          <div class="capability-number">02 · AI-Augmented Shipping</div>
-          <div class="capability-title">Design to live product, fast</div>
-          <div class="capability-copy">Designing in Figma and using AI tools (Claude Code, Cursor) to take designs from sketch to live product fast. Built for startups who need design and implementation from one trusted hand.</div>
-        </div>
-        <div class="capability">
-          <div class="capability-number">03 · Platforms & LMS</div>
-          <div class="capability-title">LearnDash builds</div>
-          <div class="capability-copy">Full LearnDash builds. Courses, lessons, quizzes, member tiers, progress tracking — integrated cleanly with payments and UX.</div>
-        </div>
-        <div class="capability">
-          <div class="capability-number">04 · E-commerce</div>
-          <div class="capability-title">WooCommerce & WordPress</div>
-          <div class="capability-copy">Product uploads, store maintenance, fixing issues, improving UX, supporting growth at every stage.</div>
-        </div>
-        <div class="capability">
-          <div class="capability-number">05 · Front-end Build</div>
-          <div class="capability-title">HTML & CSS, hand-built</div>
-          <div class="capability-copy">Clean, semantic HTML/CSS — production-ready, no bloat from page builders where it counts.</div>
-        </div>
-        <div class="capability">
-          <div class="capability-number">06 · Brand & Visual Identity</div>
-          <div class="capability-title">Full Adobe toolkit</div>
-          <div class="capability-copy">Full toolkit across Adobe Creative Suite: logo, packaging, illustration, and surface pattern. Useful when a product needs identity work alongside UX.</div>
+        <p class="section-copy">A wide toolkit, built over time.</p>
+        <div class="capabilities-grid">
+          <div class="capability">
+            <div class="capability-number">01 · Product UX Design</div>
+            <div class="capability-title">Figma-led UX design</div>
+            <div class="capability-copy">Wireframes, user flows, IA, and interfaces that feel right to use. 20+ years of design depth means strong instincts on hierarchy, clarity, and what to leave out.</div>
+          </div>
+          <div class="capability">
+            <div class="capability-number">02 · AI-Augmented Shipping</div>
+            <div class="capability-title">Design to live product, fast</div>
+            <div class="capability-copy">Designing in Figma and using AI tools (Claude Code, Cursor) to take designs from sketch to live product fast. Built for startups who need design and implementation from one trusted hand.</div>
+          </div>
+          <div class="capability">
+            <div class="capability-number">03 · Platforms &amp; LMS</div>
+            <div class="capability-title">LearnDash builds</div>
+            <div class="capability-copy">Full LearnDash builds. Courses, lessons, quizzes, member tiers, progress tracking — integrated cleanly with payments and UX.</div>
+          </div>
+          <div class="capability">
+            <div class="capability-number">04 · E-commerce</div>
+            <div class="capability-title">WooCommerce &amp; WordPress</div>
+            <div class="capability-copy">Product uploads, store maintenance, fixing issues, improving UX, supporting growth at every stage.</div>
+          </div>
+          <div class="capability">
+            <div class="capability-number">05 · Front-end Build</div>
+            <div class="capability-title">HTML &amp; CSS, hand-built</div>
+            <div class="capability-copy">Clean, semantic HTML/CSS — production-ready, no bloat from page builders where it counts.</div>
+          </div>
+          <div class="capability">
+            <div class="capability-number">06 · Brand &amp; Visual Identity</div>
+            <div class="capability-title">Full Adobe toolkit</div>
+            <div class="capability-copy">Full toolkit across Adobe Creative Suite: logo, packaging, illustration, and surface pattern. Useful when a product needs identity work alongside UX.</div>
+          </div>
         </div>
       </div>
     </section>
 
+    <!-- ---------- About ---------- -->
     <section id="about" class="section">
-      <h2>About</h2>
-      <div class="about-section">
-        <div class="about-intro">
-          <p>I've had the kind of career that gives you range — and I've leaned into it. I started as an analyst in the Investment Research division at Goldman Sachs in London — a serious apprenticeship in research, analysis, and producing high-stakes work for institutional clients. I came home to Cape Town and co-founded Fineday Design Studio, where I spent seven years building food brands and packaging — including two licensed international pattern collaborations (Studio E Fabrics and Nested Bean, both in the US).</p>
-          <p>I then spent a year contracting with Dataloop — working across dashboards, internal tools, and design — which gave me practical grounding in data-led design.</p>
-          <p>Today I co-run iNGENiO Education — a digital art learning platform for children — where I own the product design end-to-end. UX, IA, visual design, brand, and platform implementation.</p>
-          <p>What all of that adds up to is an unusual combination: 20+ years of design depth, founder-level product ownership, and a modern AI-augmented workflow. I design product UX in Figma and use AI tools (Claude Code, Cursor) to ship working products — the kind of speed and scope that used to require a small team. It's the kind of toolkit that suits small and mid-sized businesses and startups that need senior design + execution from one trusted contractor.</p>
+      <div class="container">
+        <div class="section-head">
+          <h2>About</h2>
+          <div class="rule"></div>
         </div>
-        <div class="timeline">
-          <div class="timeline-item">
-            <div class="timeline-year">2023 — Present</div>
-            <div class="timeline-role">Co-founder & Lead Designer</div>
-            <div class="timeline-company">iNGENiO Education</div>
-            <div class="timeline-description">Co-running a digital art learning platform for children aged 5–18. Own product design end-to-end — UX, IA, visual design, brand, and platform implementation on WordPress, WooCommerce, and LearnDash. Cape Town · remote.</div>
+        <div class="about-section">
+          <div class="about-intro">
+            <p>I've had the kind of career that gives you range — and I've leaned into it. I started as an analyst in the Investment Research division at Goldman Sachs in London — a serious apprenticeship in research, analysis, and producing high-stakes work for institutional clients. I came home to Cape Town and co-founded Fineday Design Studio, where I spent seven years building food brands and packaging — including two licensed international pattern collaborations (Studio E Fabrics and Nested Bean, both in the US).</p>
+            <p>I then spent a year contracting with Dataloop — working across dashboards, internal tools, and design — which gave me practical grounding in data-led design.</p>
+            <p>Today I co-run iNGENiO Education — a digital art learning platform for children — where I own the product design end-to-end. UX, AI, visual design, brand, and platform implementation.</p>
+            <p>What all of that adds up to is an unusual combination: 20+ years of design depth, founder-level product ownership, and a modern AI-augmented workflow. I design product UX in Figma and use AI tools (Claude Code, Cursor) to ship working products — the kind of speed and scope that used to require a small team. It's the kind of toolkit that suits small and mid-sized businesses and startups that need senior design + execution from one trusted contractor.</p>
           </div>
-          <div class="timeline-item">
-            <div class="timeline-year">2022 — 2023</div>
-            <div class="timeline-role">Contract Designer</div>
-            <div class="timeline-company">Dataloop</div>
-            <div class="timeline-description">A year contracting across dashboards, internal tools, and design — practical grounding in data-led design that informed my later platform work.</div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-year">2015 — 2022</div>
-            <div class="timeline-role">Co-owner & Designer</div>
-            <div class="timeline-company">Fineday Design Studio</div>
-            <div class="timeline-description">Seven years building food brands, packaging systems, and published surface pattern collections — including licensed ranges with Studio E Fabrics and Nested Bean (USA).</div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-year">2007 — 2015</div>
-            <div class="timeline-role">Freelance Graphic Designer</div>
-            <div class="timeline-company">Independent · Cape Town</div>
-            <div class="timeline-description">Eight years of independent design work across branding, print, and visual identity — the grounding that eventually became Fineday.</div>
-          </div>
-          <div class="timeline-item">
-            <div class="timeline-year">2000 — 2007</div>
-            <div class="timeline-role">Analyst, Investment Research</div>
-            <div class="timeline-company">Goldman Sachs · London</div>
-            <div class="timeline-description">Seven years in the Investment Research division — research, analysis, and producing careful, high-stakes work for institutional clients. The grounding still shapes how I approach every project.</div>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-year">2023 — Present</div>
+              <div class="timeline-role">Co-founder &amp; Lead Designer</div>
+              <div class="timeline-company">iNGENiO Education</div>
+              <div class="timeline-description">Co-running a digital art learning platform for children aged 5–18. Own product design end-to-end — UX, AI, visual design, brand, and platform implementation on WordPress, WooCommerce, and LearnDash. Cape Town · remote.</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-year">2022 — 2023</div>
+              <div class="timeline-role">Contract Designer</div>
+              <div class="timeline-company">Dataloop</div>
+              <div class="timeline-description">A year contracting across dashboards, internal tools, and design — practical grounding in data-led design that informed my later platform work.</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-year">2015 — 2022</div>
+              <div class="timeline-role">Co-owner &amp; Designer</div>
+              <div class="timeline-company">Fineday Design Studio</div>
+              <div class="timeline-description">Seven years building food brands, packaging systems, and published surface pattern collections — including licensed ranges with Studio E Fabrics and Nested Bean (USA).</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-year">2007 — 2015</div>
+              <div class="timeline-role">Freelance Graphic Designer</div>
+              <div class="timeline-company">Independent · Cape Town</div>
+              <div class="timeline-description">Eight years of independent design work across branding, print, and visual identity — the grounding that eventually became Fineday.</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-year">2000 — 2007</div>
+              <div class="timeline-role">Analyst, Investment Research</div>
+              <div class="timeline-company">Goldman Sachs · London</div>
+              <div class="timeline-description">Seven years in the Investment Research division — research, analysis, and producing careful, high-stakes work for institutional clients. The grounding still shapes how I approach every project.</div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- ---------- Contact ---------- -->
     <section id="contact" class="section">
-      <h2>Contact</h2>
-      <p class="section-copy">For project enquiries and bookings, send an email to:</p>
-      <p><a class="contact-email" href="mailto:melanie.rowlands@gmail.com?subject=Project%20enquiry">melanie.rowlands@gmail.com</a></p>
-      <p class="download-pdf-wrapper" style="margin-top: 2rem;">
-        <a class="button button-secondary download-pdf-btn" href="assets/cv.pdf" download="Mel-Rowlands-CV.pdf">Download CV</a>
-      </p>
+      <div class="container">
+        <div class="section-head">
+          <h2>Contact</h2>
+          <div class="rule"></div>
+        </div>
+        <p class="section-copy" style="margin-bottom: 1.5rem;">Currently designing in Figma, building with Claude Code and Cursor, and shipping real products on WordPress, WooCommerce, and LearnDash. Available for remote contract work globally.</p>
+        <p style="color: var(--muted); margin-bottom: 1.25rem;">For project enquiries and bookings, send an email to:</p>
+        <a class="contact-email" href="mailto:melanie.rowlands@gmail.com?subject=Project%20enquiry">melanie.rowlands@gmail.com</a>
+        <div class="contact-actions">
+          <a class="button button-dark" href="mailto:melanie.rowlands@gmail.com?subject=Hiring%20enquiry">Hire Me</a>
+          <a class="button button-outline" href="assets/cv.pdf" download="Mel-Rowlands-CV.pdf">Download CV</a>
+        </div>
+      </div>
     </section>
-  </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <span>© <span id="year"></span> Mel Rowlands — Senior Designer · Product UX with AI</span>
+      <span>Cape Town · Working globally</span>
+    </div>
+  </footer>
 
   <!-- Gallery Modal -->
   <div id="gallery-modal" class="gallery-modal">
@@ -1166,7 +1098,6 @@
       const currentItem = currentGallery[currentImageIndex];
       const currentTitle = currentTitles && currentTitles[currentImageIndex] ? currentTitles[currentImageIndex] : '';
 
-      // Show the title
       titleElement.textContent = currentTitle;
 
       // Check if it's an embeddable URL (Loom video or live website)
@@ -1178,7 +1109,6 @@
         videoElement.classList.toggle('website-preview', !isLoom);
         imageElement.classList.remove('active');
       } else {
-        // Regular image
         imageElement.src = currentItem;
         imageElement.classList.add('active');
         videoElement.classList.remove('active');
@@ -1218,24 +1148,38 @@
       }
     });
 
+    // Mobile nav toggle
+    const navToggle = document.getElementById('nav-toggle');
+    const navLinks = document.getElementById('nav-links');
+    navToggle.addEventListener('click', function() {
+      const open = navLinks.classList.toggle('open');
+      navToggle.classList.toggle('open', open);
+      navToggle.setAttribute('aria-expanded', open);
+    });
+    navLinks.querySelectorAll('.nav-link').forEach(function(link) {
+      link.addEventListener('click', function() {
+        navLinks.classList.remove('open');
+        navToggle.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+
     // Scroll-triggered animations
     function handleScrollAnimations() {
-      const sections = document.querySelectorAll('.section h2');
-
-      sections.forEach(section => {
-        const rect = section.getBoundingClientRect();
-        const windowHeight = window.innerHeight;
-
-        // Trigger animation when section is 80% into viewport
-        if (rect.top < windowHeight * 0.8) {
-          section.classList.add('fade-in');
+      document.querySelectorAll('.section-head h2').forEach(function(heading) {
+        const rect = heading.getBoundingClientRect();
+        if (rect.top < window.innerHeight * 0.85) {
+          heading.classList.add('fade-in');
         }
       });
     }
 
-    // Initial check and scroll listener
     window.addEventListener('scroll', handleScrollAnimations);
     window.addEventListener('load', handleScrollAnimations);
+    handleScrollAnimations();
+
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>

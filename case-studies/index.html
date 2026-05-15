@@ -4,357 +4,285 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>iNGENiO Case Studies — Mel Rowlands</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cal+Sans&family=Host+Grotesk:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: linear-gradient(135deg, #faf9f5 0%, #f5f2ea 100%);
-      --surface: #ffffff;
-      --surface-secondary: #fefefe;
-      --text: #1c1c1c;
-      --text-secondary: #2d3748;
-      --muted: #5a5a5a;
-      --muted-light: #718096;
-      --primary: #1a5757;
-      --primary-light: #2d7a7a;
-      --primary-dark: #153f43;
-      --accent: #d4af37;
-      --gradient: #d81b60;
-      --accent-light: #f5dab1;
-      --border: #e4ddd5;
-      --border-light: #f0ede6;
-      --shadow: rgba(26, 87, 87, 0.08);
-      --shadow-dark: rgba(26, 87, 87, 0.12);
-      --radius: 32px;
-      --radius-sm: 16px;
-      --radius-lg: 40px;
+      --bg: #ffffff;
+      --ink: #141414;
+      --ink-soft: #2c2c2c;
+      --muted: #5d5a5a;
+      --yellow: #f28d42;
+      --yellow-dark: #de711f;
+      --grey: #d9d9d9;
+      --grey-soft: #f3f2f0;
+      --line: #e6e4e0;
+      --display: 'Cal Sans', system-ui, -apple-system, sans-serif;
+      --body: 'Host Grotesk', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      --ease: cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
       min-height: 100vh;
       background: var(--bg);
-      color: var(--text);
-      font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--ink);
+      font-family: var(--body);
+      font-size: 1.0625rem;
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
 
-    .page {
-      max-width: 1200px;
+    .container {
+      max-width: 1240px;
       margin: 0 auto;
-      padding: 2rem 1.5rem 4rem;
+      padding: 0 2.5rem;
     }
 
-    /* --- Top nav (matches homepage) --- */
+    /* ---------- Nav ---------- */
     .topnav {
-      display: flex;
-      justify-content: flex-end;
-      gap: 2.5rem;
-      padding: 1.5rem 2rem;
-      margin: 0 -1.5rem 2rem -1.5rem;
-      border-bottom: 1px solid var(--border-light);
-      backdrop-filter: blur(10px);
-      background: rgba(255, 255, 255, 0.8);
-      border-radius: 0 0 var(--radius-sm) var(--radius-sm);
       position: sticky;
       top: 0;
       z-index: 100;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .topnav .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      padding-top: 1.4rem;
+      padding-bottom: 1.4rem;
+    }
+
+    .brand {
+      font-family: var(--display);
+      font-size: 1.35rem;
+      color: var(--ink);
+      text-decoration: none;
+      letter-spacing: 0.01em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.4rem;
     }
 
     .nav-link {
-      color: var(--muted);
+      color: var(--ink);
       text-decoration: none;
-      font-weight: 500;
-      letter-spacing: 0.02em;
-      transition: all 0.2s ease;
+      font-size: 1.02rem;
+      letter-spacing: 0.01em;
       position: relative;
+      padding: 0.25rem 0;
+      transition: color 0.2s var(--ease);
     }
 
     .nav-link::after {
       content: '';
       position: absolute;
-      bottom: -4px;
       left: 0;
+      bottom: 0;
       width: 0;
       height: 2px;
-      background: var(--accent);
-      transition: width 0.3s ease;
+      background: var(--yellow);
+      transition: width 0.3s var(--ease);
     }
 
+    .nav-link:hover { color: var(--muted); }
     .nav-link:hover::after,
-    .nav-link.current::after {
-      width: 100%;
-    }
+    .nav-link.current::after { width: 100%; }
 
-    .nav-link:hover {
-      color: var(--primary);
-      transform: translateY(-1px);
-    }
+    .nav-toggle { display: none; }
 
-    .nav-link.current {
-      color: var(--primary);
-    }
-
-    /* --- Buttons (match homepage) --- */
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: var(--radius-sm);
-      padding: 1rem 2rem;
-      font-weight: 600;
-      font-size: 0.95rem;
-      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-      cursor: pointer;
-      text-decoration: none;
-      position: relative;
-      overflow: hidden;
-      border: 2px solid transparent;
-    }
-
-    .button::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-      transition: left 0.5s;
-    }
-
-    .button:hover::before {
-      left: 100%;
-    }
-
-    .button-primary {
-      background: linear-gradient(135deg, var(--primary), var(--primary-light));
-      color: white;
-      border-color: var(--primary);
-      box-shadow: 0 4px 16px var(--shadow);
-    }
-
-    .button-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px var(--shadow-dark);
-    }
-
-    .button-primary.button-hire {
-      background: linear-gradient(135deg, var(--gradient), #b91456);
-      border-color: var(--gradient);
-    }
-
-    .button-secondary {
-      background: var(--surface);
-      color: var(--text);
-      border-color: var(--border);
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-    }
-
-    .button-secondary:hover {
-      background: var(--accent-light);
-      border-color: var(--accent);
-      color: var(--primary);
-      transform: translateY(-1px);
-      box-shadow: 0 4px 16px rgba(230, 162, 60, 0.15);
-    }
-
-    /* --- Page hero --- */
+    /* ---------- Page hero ---------- */
     .page-hero {
-      padding: 2rem 0 3rem;
+      padding: 5rem 0 3.5rem;
     }
 
-    .page-hero .eyebrow {
+    .eyebrow {
       display: inline-block;
-      margin-bottom: 1rem;
-      font-size: 0.85rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
+      font-family: var(--body);
       font-weight: 700;
-      color: var(--accent);
+      font-size: 0.82rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--yellow-dark);
+      margin-bottom: 1.1rem;
     }
 
     .page-hero h1 {
-      font-size: clamp(2.4rem, 4.5vw, 3.4rem);
-      line-height: 1.1;
-      margin-bottom: 1.25rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      color: var(--text-secondary);
+      font-family: var(--display);
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      line-height: 1.05;
+      margin-bottom: 1rem;
+    }
+
+    .rule {
+      width: 64px;
+      height: 4px;
+      background: var(--yellow);
+      margin-bottom: 1.75rem;
     }
 
     .page-hero .subhead {
-      font-size: 1.2rem;
-      color: var(--primary);
+      font-size: 1.15rem;
       font-weight: 600;
-      max-width: 48rem;
-      margin-bottom: 1.5rem;
-      line-height: 1.5;
+      color: var(--ink);
+      max-width: 56ch;
+      margin-bottom: 1.25rem;
+      line-height: 1.45;
     }
 
     .page-hero .intro {
-      font-size: 1.05rem;
-      color: var(--muted);
-      max-width: 48rem;
-      line-height: 1.75;
+      color: var(--ink-soft);
+      max-width: 64ch;
+      line-height: 1.7;
     }
 
-    /* --- Sticky sub-nav --- */
+    /* ---------- Sub-nav ---------- */
     .subnav {
       position: sticky;
-      top: 80px; /* sits beneath the main topnav */
+      top: 68px;
       z-index: 90;
-      background: rgba(255, 255, 255, 0.92);
+      background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(10px);
-      border: 1px solid var(--border-light);
-      border-radius: var(--radius-sm);
-      box-shadow: 0 8px 24px var(--shadow);
-      padding: 0.5rem;
-      margin: 0 0 3rem 0;
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 1rem;
+    }
+
+    .subnav .container {
+      padding-top: 0;
+      padding-bottom: 0;
     }
 
     .subnav-inner {
       display: flex;
-      gap: 0.25rem;
-      min-width: max-content;
+      gap: 2.5rem;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
     }
 
     .subnav-link {
-      flex: 1 1 auto;
-      text-align: center;
-      padding: 0.85rem 1.25rem;
-      border-radius: calc(var(--radius-sm) - 4px);
+      flex: 0 0 auto;
+      padding: 1.1rem 0;
       color: var(--muted);
       text-decoration: none;
-      font-weight: 600;
-      font-size: 0.95rem;
-      letter-spacing: -0.005em;
-      transition: background 0.2s ease, color 0.2s ease;
+      font-size: 1rem;
+      letter-spacing: 0.01em;
       white-space: nowrap;
+      position: relative;
+      transition: color 0.2s var(--ease);
     }
 
-    .subnav-link:hover {
-      color: var(--primary);
-      background: var(--accent-light);
+    .subnav-link::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 3px;
+      background: var(--yellow);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s var(--ease);
     }
 
-    .subnav-link.active {
-      color: white;
-      background: linear-gradient(135deg, var(--primary), var(--primary-light));
-      box-shadow: 0 4px 12px var(--shadow);
-    }
+    .subnav-link:hover { color: var(--ink); }
+    .subnav-link:hover::after,
+    .subnav-link.active::after { transform: scaleX(1); }
+    .subnav-link.active { color: var(--ink); }
 
     .subnav-link .step {
-      display: inline-block;
-      margin-right: 0.5rem;
+      font-family: var(--display);
       font-weight: 700;
-      color: var(--accent);
+      color: var(--yellow-dark);
+      margin-right: 0.5rem;
     }
 
-    .subnav-link.active .step {
-      color: var(--accent-light);
-    }
-
-    /* --- Case study section --- */
+    /* ---------- Case study ---------- */
     .case-study {
-      padding: 2.5rem 0 4rem;
-      scroll-margin-top: 160px; /* leave room for the two sticky bars */
+      padding: 4rem 0 4.5rem;
+      scroll-margin-top: 140px;
     }
 
     .case-study + .case-study {
-      border-top: 1px solid var(--border-light);
+      border-top: 1px solid var(--line);
     }
 
     .case-study-label {
       display: inline-block;
-      margin-bottom: 1rem;
-      font-size: 0.78rem;
+      font-family: var(--body);
       font-weight: 700;
-      letter-spacing: 0.14em;
+      font-size: 0.78rem;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: var(--accent);
+      color: var(--yellow-dark);
+      margin-bottom: 1rem;
     }
 
     .case-study h2 {
-      font-size: clamp(1.7rem, 3.2vw, 2.3rem);
-      line-height: 1.2;
-      margin-bottom: 2.5rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      color: var(--text-secondary);
-      position: relative;
-      padding-bottom: 1rem;
+      font-family: var(--display);
+      font-size: clamp(1.7rem, 3.4vw, 2.5rem);
+      line-height: 1.15;
+      margin-bottom: 1rem;
+      max-width: 28ch;
     }
 
-    .case-study h2::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 60px;
-      height: 3px;
-      background: var(--accent);
-      border-radius: 2px;
+    .case-study .rule {
+      margin-bottom: 2.5rem;
     }
 
     .case-study-block {
-      margin-bottom: 2.5rem;
+      margin-bottom: 2.25rem;
+      max-width: 64ch;
     }
 
     .case-study-block h3 {
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: var(--primary);
-      margin-bottom: 0.85rem;
-      letter-spacing: -0.005em;
+      font-family: var(--display);
+      font-size: 1.2rem;
+      color: var(--ink);
+      margin-bottom: 0.7rem;
+      letter-spacing: 0.005em;
     }
 
-    .case-study-block p {
-      color: var(--muted);
-      line-height: 1.75;
+    .case-study-block p,
+    .case-study-block ul {
+      color: var(--ink-soft);
+      line-height: 1.7;
       margin-bottom: 1rem;
-      max-width: 50rem;
     }
 
     .case-study-block ul {
-      color: var(--muted);
-      line-height: 1.75;
-      margin: 0 0 1rem 0;
-      padding-left: 1.5rem;
-      max-width: 50rem;
+      padding-left: 1.4rem;
     }
 
     .case-study-block li {
-      margin-bottom: 0.6rem;
+      margin-bottom: 0.55rem;
     }
 
     .case-study-block strong {
-      color: var(--text-secondary);
-      font-weight: 600;
+      color: var(--ink);
+      font-weight: 700;
     }
 
     .placeholder-text {
-      color: var(--muted-light);
+      color: var(--muted);
       font-style: italic;
-      font-size: 0.95rem;
+      font-size: 0.97rem;
     }
 
-    /* Visual placeholders — remove the .placeholder class when real images go in */
     .case-study-visual {
-      margin: 1.25rem 0 0;
-      border-radius: var(--radius-sm);
+      margin: 1.5rem 0 0;
       overflow: hidden;
     }
 
@@ -362,343 +290,493 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      min-height: 180px;
+      min-height: 160px;
       padding: 2rem;
-      border: 2px dashed var(--border);
-      background: rgba(255, 255, 255, 0.4);
-      color: var(--muted-light);
-      font-size: 0.85rem;
-      letter-spacing: 0.06em;
+      border: 1.5px dashed var(--line);
+      background: var(--grey-soft);
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
+      transition: border-color 0.3s var(--ease), background 0.3s var(--ease), color 0.3s var(--ease);
+    }
+
+    .case-study-visual.placeholder:hover {
+      border-color: var(--ink);
+      background: var(--bg);
+      color: var(--ink);
     }
 
     .case-study-divider {
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--line);
       display: flex;
       justify-content: center;
-      align-items: center;
-      padding: 1.5rem 0 0.5rem;
-      border-top: 1px solid var(--border-light);
-      margin-top: 1rem;
     }
 
     .case-study-next {
+      font-family: var(--display);
+      font-size: 1rem;
+      color: var(--ink);
+      text-decoration: none;
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
-      color: var(--primary);
-      font-weight: 600;
-      font-size: 0.95rem;
-      text-decoration: none;
-      padding: 0.75rem 1.25rem;
-      border-radius: var(--radius-sm);
-      transition: background 0.2s ease, color 0.2s ease;
+      gap: 0.55rem;
+      padding: 0.7rem 1.5rem;
+      border: 1.5px solid var(--ink);
+      transition: background 0.22s var(--ease), color 0.22s var(--ease), transform 0.22s var(--ease), gap 0.22s var(--ease);
     }
 
     .case-study-next:hover {
-      background: var(--accent-light);
-      color: var(--primary-dark);
+      background: var(--ink);
+      color: #ffffff;
+      transform: translateY(-2px);
+      gap: 0.8rem;
     }
 
-    /* --- Footer CTA --- */
+    /* ---------- Buttons ---------- */
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      font-family: var(--display);
+      font-size: 0.95rem;
+      padding: 0.7rem 1.5rem;
+      text-decoration: none;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: transform 0.22s var(--ease), background 0.22s var(--ease),
+                  color 0.22s var(--ease), box-shadow 0.22s var(--ease), border-color 0.22s var(--ease);
+    }
+
+    .button-primary {
+      background: var(--yellow);
+      color: #ffffff;
+      border-color: var(--yellow);
+    }
+
+    .button-primary:hover {
+      background: var(--yellow-dark);
+      border-color: var(--yellow-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px rgba(242, 141, 66, 0.35);
+    }
+
+    .button-dark {
+      background: var(--ink);
+      color: #ffffff;
+      border-color: var(--ink);
+    }
+
+    .button-dark:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px rgba(20, 20, 20, 0.28);
+    }
+
+    .button-outline {
+      background: transparent;
+      color: var(--ink);
+      border-color: var(--ink);
+    }
+
+    .button-outline:hover {
+      background: var(--ink);
+      color: #ffffff;
+      transform: translateY(-2px);
+    }
+
+    /* ---------- Footer CTA ---------- */
     .footer-cta {
-      margin-top: 3rem;
-      padding: 3rem 2.5rem;
-      background: linear-gradient(135deg, var(--surface), var(--surface-secondary));
-      border: 1px solid var(--border-light);
-      border-radius: var(--radius);
-      box-shadow: 0 24px 60px var(--shadow);
+      margin: 4rem 0 5rem;
+      padding: 4rem 3rem;
+      background: var(--grey-soft);
       text-align: center;
+      position: relative;
+    }
+
+    .footer-cta::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: var(--yellow);
     }
 
     .footer-cta h2 {
-      font-size: clamp(1.8rem, 3.2vw, 2.4rem);
+      font-family: var(--display);
+      font-size: clamp(1.8rem, 3.4vw, 2.5rem);
+      line-height: 1.1;
       margin-bottom: 1rem;
-      color: var(--text-secondary);
-      font-weight: 700;
-      letter-spacing: -0.02em;
     }
 
     .footer-cta p {
-      color: var(--muted);
-      font-size: 1.05rem;
-      max-width: 42rem;
+      color: var(--ink-soft);
+      max-width: 52ch;
       margin: 0 auto 2rem;
-      line-height: 1.7;
+      line-height: 1.65;
     }
 
     .footer-cta .button-group {
       display: flex;
       flex-wrap: wrap;
-      gap: 1rem;
+      gap: 0.9rem;
       justify-content: center;
     }
 
-    /* --- Responsive --- */
-    @media (max-width: 720px) {
-      .topnav {
-        gap: 1.25rem;
-        padding: 1rem 1.25rem;
-        font-size: 0.92rem;
-      }
-
-      .subnav {
-        top: 72px;
-        padding: 0.4rem;
-        margin-bottom: 2rem;
-      }
-
-      .subnav-link {
-        padding: 0.7rem 0.9rem;
-        font-size: 0.85rem;
-      }
-
-      .case-study {
-        padding: 2rem 0 3rem;
-        scroll-margin-top: 140px;
-      }
-
-      .footer-cta {
-        padding: 2rem 1.25rem;
-      }
+    /* ---------- Site footer ---------- */
+    .site-footer {
+      border-top: 1px solid var(--line);
+      padding: 2.5rem 0;
+      color: var(--muted);
+      font-size: 0.92rem;
     }
 
-    @media (max-width: 560px) {
-      .page {
-        padding: 1.5rem 1rem;
-      }
+    .site-footer .container {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
 
-      .topnav {
-        gap: 1rem;
-        overflow-x: auto;
-        justify-content: flex-start;
-      }
+    /* ---------- Responsive ---------- */
+    @media (max-width: 980px) {
+      .container { padding: 0 1.75rem; }
+      .page-hero { padding: 3.5rem 0 2.5rem; }
+      .case-study { padding: 3rem 0 3.5rem; }
+    }
 
-      .footer-cta .button-group {
+    @media (max-width: 720px) {
+      .nav-links {
+        position: fixed;
+        inset: 0 0 0 auto;
+        width: min(78vw, 320px);
+        background: var(--bg);
         flex-direction: column;
+        gap: 1.5rem;
+        padding: 6rem 2rem 2rem;
+        transform: translateX(100%);
+        transition: transform 0.35s var(--ease);
+        box-shadow: -20px 0 60px rgba(0, 0, 0, 0.12);
       }
+      .nav-links.open { transform: translateX(0); }
+      .nav-toggle {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+        width: 40px;
+        height: 40px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        z-index: 110;
+      }
+      .nav-toggle span {
+        display: block;
+        height: 2px;
+        width: 24px;
+        background: var(--ink);
+        transition: transform 0.3s var(--ease), opacity 0.3s var(--ease);
+      }
+      .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+      .nav-toggle.open span:nth-child(2) { opacity: 0; }
+      .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+      .subnav-inner { gap: 1.5rem; }
+      .subnav-link { font-size: 0.92rem; padding: 0.9rem 0; }
+
+      .footer-cta { padding: 2.5rem 1.5rem; }
+      .footer-cta .button-group { flex-direction: column; }
+      .footer-cta .button { width: 100%; }
+    }
+
+    @media print {
+      @page { margin: 1.5cm; size: A4; }
+      * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+      body { background: white !important; font-size: 10pt; line-height: 1.4; }
+      .container { max-width: 100%; padding: 0; }
+      .topnav, .nav-toggle, .subnav, .footer-cta, .site-footer, .case-study-divider { display: none !important; }
+      .case-study { padding: 1rem 0; page-break-inside: avoid; }
+      .case-study h2 { font-size: 14pt; page-break-after: avoid; }
+      .case-study-block h3 { font-size: 11pt; }
+      .case-study-visual.placeholder { display: none; }
     }
   </style>
 </head>
 <body>
-  <div class="page">
-    <nav class="topnav">
-      <a class="nav-link" href="/#work">Work</a>
-      <a class="nav-link current" href="/case-studies/">Case Studies</a>
-      <a class="nav-link" href="/#capabilities">Capabilities</a>
-      <a class="nav-link" href="/#about">About</a>
-      <a class="nav-link" href="/#contact">Contact</a>
-    </nav>
+  <nav class="topnav">
+    <div class="container">
+      <a class="brand" href="/">Mel Rowlands</a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-links" id="nav-links">
+        <a class="nav-link" href="/#work">work</a>
+        <a class="nav-link current" href="/case-studies/">case studies</a>
+        <a class="nav-link" href="/#capabilities">capabilities</a>
+        <a class="nav-link" href="/#about">about</a>
+        <a class="nav-link" href="/#contact">contact</a>
+      </div>
+    </div>
+  </nav>
 
+  <main>
     <header class="page-hero" id="top">
-      <div class="eyebrow">iNGENiO Education</div>
-      <h1>iNGENiO Case Studies</h1>
-      <p class="subhead">Three product design problems I solved while co-founding a digital art learning platform for kids.</p>
-      <p class="intro">This is the story of how I helped iNGENiO Education turn casual browsers into engaged learners — a 3-part product design journey through acquisition, activation, and engagement. Each case study covers a real problem we hit, what I designed to fix it, and what I learned. Together they show how solving one bottleneck reveals the next — and how iterative product design actually works.</p>
+      <div class="container">
+        <span class="eyebrow">iNGENiO Education</span>
+        <h1>iNGENiO Case Studies</h1>
+        <div class="rule"></div>
+        <p class="subhead">Three product design problems I solved while co-founding a digital art learning platform for kids.</p>
+        <p class="intro">This is the story of how I helped iNGENiO Education turn casual browsers into engaged learners — a 3-part product design journey through acquisition, activation, and engagement. Each case study covers a real problem we hit, what I designed to fix it, and what I learned. Together they show how solving one bottleneck reveals the next — and how iterative product design actually works.</p>
+      </div>
     </header>
 
     <nav class="subnav" aria-label="Case study navigation">
-      <div class="subnav-inner">
-        <a class="subnav-link" href="#all-access-pass" data-target="all-access-pass"><span class="step">1.</span>All Access Pass</a>
-        <a class="subnav-link" href="#free-trial" data-target="free-trial"><span class="step">2.</span>Frictionless Free Trial</a>
-        <a class="subnav-link" href="#guided-path" data-target="guided-path"><span class="step">3.</span>Guided Learning Path</a>
+      <div class="container">
+        <div class="subnav-inner">
+          <a class="subnav-link" href="#all-access-pass" data-target="all-access-pass"><span class="step">01</span>All Access Pass</a>
+          <a class="subnav-link" href="#free-trial" data-target="free-trial"><span class="step">02</span>Frictionless Free Trial</a>
+          <a class="subnav-link" href="#guided-path" data-target="guided-path"><span class="step">03</span>Guided Learning Path</a>
+        </div>
       </div>
     </nav>
 
     <!-- ============ CASE STUDY 1 ============ -->
     <article class="case-study" id="all-access-pass">
-      <div class="case-study-label">Case Study 1</div>
-      <h2>From Browsers to Subscribers: Solving Choice Paralysis in a Kids' Digital Art Course Library</h2>
+      <div class="container">
+        <div class="case-study-label">Case Study 01</div>
+        <h2>From Browsers to Subscribers: Solving Choice Paralysis in a Kids' Digital Art Course Library</h2>
+        <div class="rule"></div>
 
-      <section class="case-study-block">
-        <h3>Overview</h3>
-        <p>iNGENiO Education is an online digital art platform for kids aged 5–18, built around a library of 100+ video courses. I co-founded the platform and led product design — owning UX research, information architecture, visual design, and platform implementation on WordPress, WooCommerce, and LearnDash LMS. This first case study covers the acquisition problem: how we turned casual browsers into paying members by solving choice paralysis in the Course Library.</p>
-        <div class="case-study-visual placeholder">Visual placeholder</div>
-      </section>
+        <section class="case-study-block">
+          <h3>Overview</h3>
+          <p>iNGENiO Education is an online digital art platform for kids aged 5–18, built around a library of 100+ video courses. I co-founded the platform and led product design — owning UX research, information architecture, visual design, and platform implementation on WordPress, WooCommerce, and LearnDash LMS. This first case study covers the acquisition problem: how we turned casual browsers into paying members by solving choice paralysis in the Course Library.</p>
+          <div class="case-study-visual placeholder">Visual placeholder</div>
+        </section>
 
-      <section class="case-study-block">
-        <h3>The Problem</h3>
-        <p>We were getting good traffic to the Course Library but seeing high bounce rates and low conversion. Light user feedback surveys revealed three recurring themes: parents felt overwhelmed by 100+ individual courses; they were confused by course duplicates across different drawing apps; and they couldn't quickly judge value before committing to a one-off purchase.</p>
-        <div class="case-study-visual placeholder">Visual placeholder</div>
-      </section>
+        <section class="case-study-block">
+          <h3>The Problem</h3>
+          <p>We were getting good traffic to the Course Library but seeing high bounce rates and low conversion. Light user feedback surveys revealed three recurring themes: parents felt overwhelmed by 100+ individual courses; they were confused by course duplicates across different drawing apps; and they couldn't quickly judge value before committing to a one-off purchase.</p>
+          <div class="case-study-visual placeholder">Visual placeholder</div>
+        </section>
 
-      <section class="case-study-block">
-        <h3>Users & Audience</h3>
-        <p>Two primary user groups: parents (the buyers and decision-makers, evaluating value, affordability, and educational fit for their children) and kids aged 5–18 (the end-users, who needed engaging, age-appropriate content). Most purchase decisions happened during a brief, distracted browse — so the Course Library had to communicate value in seconds, not minutes.</p>
-        <div class="case-study-visual placeholder">Visual placeholder</div>
-      </section>
+        <section class="case-study-block">
+          <h3>Users &amp; Audience</h3>
+          <p>Two primary user groups: parents (the buyers and decision-makers, evaluating value, affordability, and educational fit for their children) and kids aged 5–18 (the end-users, who needed engaging, age-appropriate content). Most purchase decisions happened during a brief, distracted browse — so the Course Library had to communicate value in seconds, not minutes.</p>
+          <div class="case-study-visual placeholder">Visual placeholder</div>
+        </section>
 
-      <section class="case-study-block">
-        <h3>My Role</h3>
-        <p>Co-founder and Lead Designer. I owned UX research (light feedback surveys, synthesis, prioritisation), information architecture, visual design, and platform implementation. Alongside two co-founders, I shared decision-making on pricing, positioning, and product direction.</p>
-        <div class="case-study-visual placeholder">Visual placeholder</div>
-      </section>
+        <section class="case-study-block">
+          <h3>My Role</h3>
+          <p>Co-founder and Lead Designer. I owned UX research (light feedback surveys, synthesis, prioritisation), information architecture, visual design, and platform implementation. Alongside two co-founders, I shared decision-making on pricing, positioning, and product direction.</p>
+          <div class="case-study-visual placeholder">Visual placeholder</div>
+        </section>
 
-      <section class="case-study-block">
-        <h3>Scope & Constraints</h3>
-        <p>Built on WordPress, WooCommerce, and LearnDash with no dedicated engineering team. I implemented the redesign myself, which kept iteration fast but meant every design choice had to be feasible within the existing platform. Small budget, small team, and a need to test changes quickly with real users rather than via lengthy research cycles.</p>
-        <div class="case-study-visual placeholder">Visual placeholder</div>
-      </section>
+        <section class="case-study-block">
+          <h3>Scope &amp; Constraints</h3>
+          <p>Built on WordPress, WooCommerce, and LearnDash with no dedicated engineering team. I implemented the redesign myself, which kept iteration fast but meant every design choice had to be feasible within the existing platform. Small budget, small team, and a need to test changes quickly with real users rather than via lengthy research cycles.</p>
+          <div class="case-study-visual placeholder">Visual placeholder</div>
+        </section>
 
-      <section class="case-study-block">
-        <h3>Process & What I Did</h3>
-        <ul>
-          <li><strong>Listened first.</strong> Sent lightweight feedback surveys to existing users. Synthesised responses into three core pain points: choice paralysis, course duplication confusion, and unclear value.</li>
-          <li><strong>Simplified the Course Library.</strong> Redesigned course cards to be visually-led — drawing app shown at a glance, one-line description, less dense copy. Cut the visual noise so users could scan rather than read.</li>
-          <li><strong>Reframed the pricing model.</strong> Introduced an "All Access Pass" monthly subscription priced just above a single course, and surfaced it across multiple decision points throughout the funnel.</li>
-          <li><strong>Built it.</strong> Implemented the entire redesign myself on WordPress / WooCommerce / LearnDash, allowing fast iteration without engineering bottlenecks.</li>
-        </ul>
-        <div class="case-study-visual placeholder">Visual placeholder</div>
-      </section>
+        <section class="case-study-block">
+          <h3>Process &amp; What I Did</h3>
+          <ul>
+            <li><strong>Listened first.</strong> Sent lightweight feedback surveys to existing users. Synthesised responses into three core pain points: choice paralysis, course duplication confusion, and unclear value.</li>
+            <li><strong>Simplified the Course Library.</strong> Redesigned course cards to be visually-led — drawing app shown at a glance, one-line description, less dense copy. Cut the visual noise so users could scan rather than read.</li>
+            <li><strong>Reframed the pricing model.</strong> Introduced an "All Access Pass" monthly subscription priced just above a single course, and surfaced it across multiple decision points throughout the funnel.</li>
+            <li><strong>Built it.</strong> Implemented the entire redesign myself on WordPress / WooCommerce / LearnDash, allowing fast iteration without engineering bottlenecks.</li>
+          </ul>
+          <div class="case-study-visual placeholder">Visual placeholder</div>
+        </section>
 
-      <section class="case-study-block">
-        <h3>Outcomes & Lessons Learned</h3>
-        <p>The visually-led course cards eliminated the "Procreate vs Sketchbook" confusion users had been reporting. Users overwhelmingly chose the All Access Pass over one-off courses once they could see the value of 100+ courses at one monthly price. Free trial sign-ups grew significantly after we surfaced the pass at multiple touchpoints.</p>
-        <p>The biggest lesson: solving one bottleneck reveals the next. Once acquisition was working, paid conversion below target became the new headline problem — which led directly to Case Study 2.</p>
-        <p><strong>Honest note:</strong> iNGENiO is an early-stage platform I co-founded, not a scaled product with millions of users. These results are best understood as qualitative learnings and behavioural shifts from a small but real user base — not enterprise-scale metrics.</p>
-        <div class="case-study-visual placeholder">Visual placeholder</div>
-      </section>
+        <section class="case-study-block">
+          <h3>Outcomes &amp; Lessons Learned</h3>
+          <p>The visually-led course cards eliminated the "Procreate vs Sketchbook" confusion users had been reporting. Users overwhelmingly chose the All Access Pass over one-off courses once they could see the value of 100+ courses at one monthly price. Free trial sign-ups grew significantly after we surfaced the pass at multiple touchpoints.</p>
+          <p>The biggest lesson: solving one bottleneck reveals the next. Once acquisition was working, paid conversion below target became the new headline problem — which led directly to Case Study 2.</p>
+          <p><strong>Honest note:</strong> iNGENiO is an early-stage platform I co-founded, not a scaled product with millions of users. These results are best understood as qualitative learnings and behavioural shifts from a small but real user base — not enterprise-scale metrics.</p>
+          <div class="case-study-visual placeholder">Visual placeholder</div>
+        </section>
 
-      <section class="case-study-block">
-        <h3>How I Used AI in This Project</h3>
-        <p>I used Claude (Anthropic's AI assistant) and Claude Code throughout this work: prototyping HTML/CSS variations of redesigned components in hours rather than days; pressure-testing the All Access Pass pricing model before committing build time; and accelerating WordPress / WooCommerce / LearnDash customisations.</p>
-        <p>What AI didn't do: the design decisions, the user research synthesis, or the judgement calls on what to build. My workflow treats AI as a fast junior collaborator — useful for execution speed, but always reviewed by me on anything fact-based or strategic.</p>
-        <div class="case-study-visual placeholder">Visual placeholder</div>
-      </section>
+        <section class="case-study-block">
+          <h3>How I Used AI in This Project</h3>
+          <p>I used Claude (Anthropic's AI assistant) and Claude Code throughout this work: prototyping HTML/CSS variations of redesigned components in hours rather than days; pressure-testing the All Access Pass pricing model before committing build time; and accelerating WordPress / WooCommerce / LearnDash customisations.</p>
+          <p>What AI didn't do: the design decisions, the user research synthesis, or the judgement calls on what to build. My workflow treats AI as a fast junior collaborator — useful for execution speed, but always reviewed by me on anything fact-based or strategic.</p>
+          <div class="case-study-visual placeholder">Visual placeholder</div>
+        </section>
 
-      <div class="case-study-divider">
-        <a class="case-study-next" href="#free-trial">↓ Next: Frictionless Free Trial</a>
+        <div class="case-study-divider">
+          <a class="case-study-next" href="#free-trial">Next: Frictionless Free Trial →</a>
+        </div>
       </div>
     </article>
 
     <!-- ============ CASE STUDY 2 ============ -->
     <article class="case-study" id="free-trial">
-      <div class="case-study-label">Case Study 2</div>
-      <h2>From Free Trial Friction to Frictionless Sign-Up: Removing the Credit Card Barrier</h2>
+      <div class="container">
+        <div class="case-study-label">Case Study 02</div>
+        <h2>From Free Trial Friction to Frictionless Sign-Up: Removing the Credit Card Barrier</h2>
+        <div class="rule"></div>
 
-      <section class="case-study-block">
-        <h3>Overview</h3>
-        <p class="placeholder-text">[Content coming soon — full case study in progress]</p>
-        <div class="case-study-visual placeholder">Visual placeholder</div>
-      </section>
+        <section class="case-study-block">
+          <h3>Overview</h3>
+          <p class="placeholder-text">[Content coming soon — full case study in progress]</p>
+          <div class="case-study-visual placeholder">Visual placeholder</div>
+        </section>
 
-      <section class="case-study-block">
-        <h3>The Problem</h3>
-        <p class="placeholder-text">[Content coming soon — full case study in progress]</p>
-        <div class="case-study-visual placeholder">Visual placeholder</div>
-      </section>
+        <section class="case-study-block">
+          <h3>The Problem</h3>
+          <p class="placeholder-text">[Content coming soon — full case study in progress]</p>
+          <div class="case-study-visual placeholder">Visual placeholder</div>
+        </section>
 
-      <section class="case-study-block">
-        <h3>Users & Audience</h3>
-        <p class="placeholder-text">[Content coming soon — full case study in progress]</p>
-        <div class="case-study-visual placeholder">Visual placeholder</div>
-      </section>
+        <section class="case-study-block">
+          <h3>Users &amp; Audience</h3>
+          <p class="placeholder-text">[Content coming soon — full case study in progress]</p>
+          <div class="case-study-visual placeholder">Visual placeholder</div>
+        </section>
 
-      <section class="case-study-block">
-        <h3>My Role</h3>
-        <p class="placeholder-text">[Content coming soon — full case study in progress]</p>
-        <div class="case-study-visual placeholder">Visual placeholder</div>
-      </section>
+        <section class="case-study-block">
+          <h3>My Role</h3>
+          <p class="placeholder-text">[Content coming soon — full case study in progress]</p>
+          <div class="case-study-visual placeholder">Visual placeholder</div>
+        </section>
 
-      <section class="case-study-block">
-        <h3>Scope & Constraints</h3>
-        <p class="placeholder-text">[Content coming soon — full case study in progress]</p>
-        <div class="case-study-visual placeholder">Visual placeholder</div>
-      </section>
+        <section class="case-study-block">
+          <h3>Scope &amp; Constraints</h3>
+          <p class="placeholder-text">[Content coming soon — full case study in progress]</p>
+          <div class="case-study-visual placeholder">Visual placeholder</div>
+        </section>
 
-      <section class="case-study-block">
-        <h3>Process & What I Did</h3>
-        <p class="placeholder-text">[Content coming soon — full case study in progress]</p>
-        <div class="case-study-visual placeholder">Visual placeholder</div>
-      </section>
+        <section class="case-study-block">
+          <h3>Process &amp; What I Did</h3>
+          <p class="placeholder-text">[Content coming soon — full case study in progress]</p>
+          <div class="case-study-visual placeholder">Visual placeholder</div>
+        </section>
 
-      <section class="case-study-block">
-        <h3>Outcomes & Lessons Learned</h3>
-        <p class="placeholder-text">[Content coming soon — full case study in progress]</p>
-        <div class="case-study-visual placeholder">Visual placeholder</div>
-      </section>
+        <section class="case-study-block">
+          <h3>Outcomes &amp; Lessons Learned</h3>
+          <p class="placeholder-text">[Content coming soon — full case study in progress]</p>
+          <div class="case-study-visual placeholder">Visual placeholder</div>
+        </section>
 
-      <section class="case-study-block">
-        <h3>How I Used AI in This Project</h3>
-        <p class="placeholder-text">[Content coming soon — full case study in progress]</p>
-        <div class="case-study-visual placeholder">Visual placeholder</div>
-      </section>
+        <section class="case-study-block">
+          <h3>How I Used AI in This Project</h3>
+          <p class="placeholder-text">[Content coming soon — full case study in progress]</p>
+          <div class="case-study-visual placeholder">Visual placeholder</div>
+        </section>
 
-      <div class="case-study-divider">
-        <a class="case-study-next" href="#guided-path">↓ Next: Guided Learning Path</a>
+        <div class="case-study-divider">
+          <a class="case-study-next" href="#guided-path">Next: Guided Learning Path →</a>
+        </div>
       </div>
     </article>
 
     <!-- ============ CASE STUDY 3 ============ -->
     <article class="case-study" id="guided-path">
-      <div class="case-study-label">Case Study 3</div>
-      <h2>From Sign-Up to Engagement: Designing a Guided Path for New Users</h2>
+      <div class="container">
+        <div class="case-study-label">Case Study 03</div>
+        <h2>From Sign-Up to Engagement: Designing a Guided Path for New Users</h2>
+        <div class="rule"></div>
 
-      <section class="case-study-block">
-        <h3>Overview</h3>
-        <p class="placeholder-text">[Content coming soon — full case study in progress]</p>
-        <div class="case-study-visual placeholder">Visual placeholder</div>
-      </section>
+        <section class="case-study-block">
+          <h3>Overview</h3>
+          <p class="placeholder-text">[Content coming soon — full case study in progress]</p>
+          <div class="case-study-visual placeholder">Visual placeholder</div>
+        </section>
 
-      <section class="case-study-block">
-        <h3>The Problem</h3>
-        <p class="placeholder-text">[Content coming soon — full case study in progress]</p>
-        <div class="case-study-visual placeholder">Visual placeholder</div>
-      </section>
+        <section class="case-study-block">
+          <h3>The Problem</h3>
+          <p class="placeholder-text">[Content coming soon — full case study in progress]</p>
+          <div class="case-study-visual placeholder">Visual placeholder</div>
+        </section>
 
-      <section class="case-study-block">
-        <h3>Users & Audience</h3>
-        <p class="placeholder-text">[Content coming soon — full case study in progress]</p>
-        <div class="case-study-visual placeholder">Visual placeholder</div>
-      </section>
+        <section class="case-study-block">
+          <h3>Users &amp; Audience</h3>
+          <p class="placeholder-text">[Content coming soon — full case study in progress]</p>
+          <div class="case-study-visual placeholder">Visual placeholder</div>
+        </section>
 
-      <section class="case-study-block">
-        <h3>My Role</h3>
-        <p class="placeholder-text">[Content coming soon — full case study in progress]</p>
-        <div class="case-study-visual placeholder">Visual placeholder</div>
-      </section>
+        <section class="case-study-block">
+          <h3>My Role</h3>
+          <p class="placeholder-text">[Content coming soon — full case study in progress]</p>
+          <div class="case-study-visual placeholder">Visual placeholder</div>
+        </section>
 
-      <section class="case-study-block">
-        <h3>Scope & Constraints</h3>
-        <p class="placeholder-text">[Content coming soon — full case study in progress]</p>
-        <div class="case-study-visual placeholder">Visual placeholder</div>
-      </section>
+        <section class="case-study-block">
+          <h3>Scope &amp; Constraints</h3>
+          <p class="placeholder-text">[Content coming soon — full case study in progress]</p>
+          <div class="case-study-visual placeholder">Visual placeholder</div>
+        </section>
 
-      <section class="case-study-block">
-        <h3>Process & What I Did</h3>
-        <p class="placeholder-text">[Content coming soon — full case study in progress]</p>
-        <div class="case-study-visual placeholder">Visual placeholder</div>
-      </section>
+        <section class="case-study-block">
+          <h3>Process &amp; What I Did</h3>
+          <p class="placeholder-text">[Content coming soon — full case study in progress]</p>
+          <div class="case-study-visual placeholder">Visual placeholder</div>
+        </section>
 
-      <section class="case-study-block">
-        <h3>Outcomes & Lessons Learned</h3>
-        <p class="placeholder-text">[Content coming soon — full case study in progress]</p>
-        <div class="case-study-visual placeholder">Visual placeholder</div>
-      </section>
+        <section class="case-study-block">
+          <h3>Outcomes &amp; Lessons Learned</h3>
+          <p class="placeholder-text">[Content coming soon — full case study in progress]</p>
+          <div class="case-study-visual placeholder">Visual placeholder</div>
+        </section>
 
-      <section class="case-study-block">
-        <h3>How I Used AI in This Project</h3>
-        <p class="placeholder-text">[Content coming soon — full case study in progress]</p>
-        <div class="case-study-visual placeholder">Visual placeholder</div>
-      </section>
+        <section class="case-study-block">
+          <h3>How I Used AI in This Project</h3>
+          <p class="placeholder-text">[Content coming soon — full case study in progress]</p>
+          <div class="case-study-visual placeholder">Visual placeholder</div>
+        </section>
 
-      <div class="case-study-divider">
-        <a class="case-study-next" href="#top">↑ Back to top</a>
+        <div class="case-study-divider">
+          <a class="case-study-next" href="#top">↑ Back to top</a>
+        </div>
       </div>
     </article>
 
     <!-- ============ FOOTER CTA ============ -->
-    <section class="footer-cta">
-      <h2>Like what you see?</h2>
-      <p>I'm available for remote contract work. I help startups and small teams ship product UX faster — with senior design depth and a modern AI workflow.</p>
-      <div class="button-group">
-        <a class="button button-primary button-hire" href="mailto:melanie.rowlands@gmail.com?subject=Hiring%20enquiry">Hire Me</a>
-        <a class="button button-secondary" href="/assets/cv.pdf" download="Mel-Rowlands-CV.pdf">Download CV</a>
-      </div>
-    </section>
-  </div>
+    <div class="container">
+      <section class="footer-cta">
+        <h2>Like what you see?</h2>
+        <p>I'm available for remote contract work. I help startups and small teams ship product UX faster — with senior design depth and a modern AI workflow.</p>
+        <div class="button-group">
+          <a class="button button-dark" href="mailto:melanie.rowlands@gmail.com?subject=Hiring%20enquiry">Hire Me</a>
+          <a class="button button-outline" href="/assets/cv.pdf" download="Mel-Rowlands-CV.pdf">Download CV</a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <span>© <span id="year"></span> Mel Rowlands — Senior Designer · Product UX with AI</span>
+      <span>Cape Town · Working globally</span>
+    </div>
+  </footer>
 
   <script>
-    // Highlight the sub-nav item for whichever case study is currently in view.
+    // Mobile nav toggle
+    const navToggle = document.getElementById('nav-toggle');
+    const navLinks = document.getElementById('nav-links');
+    if (navToggle && navLinks) {
+      navToggle.addEventListener('click', function() {
+        const open = navLinks.classList.toggle('open');
+        navToggle.classList.toggle('open', open);
+        navToggle.setAttribute('aria-expanded', open);
+      });
+      navLinks.querySelectorAll('.nav-link').forEach(function(link) {
+        link.addEventListener('click', function() {
+          navLinks.classList.remove('open');
+          navToggle.classList.remove('open');
+          navToggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+
+    // Sub-nav active state via IntersectionObserver
     const subnavLinks = document.querySelectorAll('.subnav-link');
     const sections = document.querySelectorAll('.case-study');
 
@@ -709,9 +787,7 @@
     };
 
     if ('IntersectionObserver' in window && sections.length) {
-      // Trigger when a section crosses roughly the upper third of the viewport.
       const observer = new IntersectionObserver((entries) => {
-        // Sort intersecting entries top-to-bottom and use the topmost as the active one.
         const visible = entries
           .filter(e => e.isIntersecting)
           .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
@@ -726,8 +802,10 @@
       sections.forEach(s => observer.observe(s));
     }
 
-    // Default the first section as active on load.
     if (sections.length) setActive(sections[0].id);
+
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
