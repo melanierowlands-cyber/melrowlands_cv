@@ -286,6 +286,27 @@
       overflow: hidden;
     }
 
+    .case-study-visual img {
+      display: block;
+      width: 100%;
+      height: auto;
+      transition: transform 0.5s var(--ease);
+    }
+
+    .case-study-visual:not(.placeholder) {
+      border: 1px solid var(--line);
+      transition: border-color 0.3s var(--ease), box-shadow 0.3s var(--ease);
+    }
+
+    .case-study-visual:not(.placeholder):hover {
+      border-color: var(--ink);
+      box-shadow: 0 18px 36px rgba(20, 20, 20, 0.12);
+    }
+
+    .case-study-visual:not(.placeholder):hover img {
+      transform: scale(1.02);
+    }
+
     .case-study-visual.placeholder {
       display: flex;
       align-items: center;
@@ -556,25 +577,33 @@
         <section class="case-study-block">
           <h3>Overview</h3>
           <p>iNGENiO Education is an online digital art platform for kids aged 5–18, built around a library of 100+ video courses. I co-founded the platform and led product design — owning UX research, information architecture, visual design, and platform implementation on WordPress, WooCommerce, and LearnDash LMS. This first case study covers the acquisition problem: how we turned casual browsers into paying members by solving choice paralysis in the Course Library.</p>
-          <div class="case-study-visual placeholder">Visual placeholder</div>
+          <div class="case-study-visual">
+            <img src="Case%20Study_1_Overview%20Image.png" alt="iNGENiO Course Library overview" loading="lazy">
+          </div>
         </section>
 
         <section class="case-study-block">
           <h3>The Problem</h3>
           <p>We were getting good traffic to the Course Library but seeing high bounce rates and low conversion. Light user feedback surveys revealed three recurring themes: parents felt overwhelmed by 100+ individual courses; they were confused by course duplicates across different drawing apps; and they couldn't quickly judge value before committing to a one-off purchase.</p>
-          <div class="case-study-visual placeholder">Visual placeholder</div>
+          <div class="case-study-visual">
+            <img src="Case%20Study%201_%20The%20Problem.png" alt="The Problem: choice paralysis in the iNGENiO Course Library" loading="lazy">
+          </div>
         </section>
 
         <section class="case-study-block">
           <h3>Users &amp; Audience</h3>
           <p>Two primary user groups: parents (the buyers and decision-makers, evaluating value, affordability, and educational fit for their children) and kids aged 5–18 (the end-users, who needed engaging, age-appropriate content). Most purchase decisions happened during a brief, distracted browse — so the Course Library had to communicate value in seconds, not minutes.</p>
-          <div class="case-study-visual placeholder">Visual placeholder</div>
+          <div class="case-study-visual">
+            <img src="Case%20Study%201_Audience%20and%20Users.png" alt="Audience and users: parents as decision-makers and kids aged 5–18 as end-users" loading="lazy">
+          </div>
         </section>
 
         <section class="case-study-block">
           <h3>My Role</h3>
           <p>Co-founder and Lead Designer. I owned UX research (light feedback surveys, synthesis, prioritisation), information architecture, visual design, and platform implementation. Alongside two co-founders, I shared decision-making on pricing, positioning, and product direction.</p>
-          <div class="case-study-visual placeholder">Visual placeholder</div>
+          <div class="case-study-visual">
+            <img src="Case%20Study%201_Roles%20%26%20Responsibilities.png" alt="Roles and responsibilities: co-founder and lead designer across UX, IA, visual design, and implementation" loading="lazy">
+          </div>
         </section>
 
         <section class="case-study-block">
